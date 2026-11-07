@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: "Baloo"; src: url("../assets/fonts/Baloo2.ttf"); font-weight: 800; }
+  html, body { margin: 0; background: #0b1636; }
+  svg { display: block; }
+</style>
+</head>
+<body>
+<svg id="svg" xmlns="http://www.w3.org/2000/svg"></svg>
+<script src="../pipeline/scene.js"></script>
+<script>
+// Builds channel art from the same character code the videos use.
+// ?w=800&h=800&layout=profile  or  ?w=2560&h=1440&layout=banner
+const q = new URLSearchParams(location.search);
+const Wd = +q.get("w") || 800, Ht = +q.get("h") || 800, layout = q.get("layout") || "profile";
+const svgEl = document.getElementById("svg");
+svgEl.setAttribute("width", Wd); svgEl.setAttribute("height", Ht);
+svgEl.setAttribute("viewBox", `0 0 ${Wd} ${Ht}`);
+
+const CAST = {
+  mila: ["lamb", "#fffaf0"], luna: ["bunny", "#f4eaff"], pip: ["turtle", "#4caf50"],
+  bo: ["bird", "#3d9df3"], fen: ["fox", "#f08a24"], bruno: ["bear", "#9a6440"],
+};
+const place = (id, x, y, s, face = 1) =>
+  `<g transform="translate(${x},${y}) scale(${s * face},${s})">${KINDS[CAST[id][0]].svg(id, CAST[id][1])}</g>`;
+
+function stars(n, seed, w, h) {
+  const r = rand(seed); let s = "";
+  for (let i = 0; i < n; i++) s += `<circle cx="${(r() * w).toFixed(0)}" cy="${(r() * h).toFixed(0)}" r="${(1.5 + r() * 3).toFixed(1)}" fill="#fff7d6" opacity="${(0.4 + r() * 0.6).toFixed(2)}"/>`;
+  return s;
+}
+
+let body;
+if (layout === "profile") {
+  // circle-safe: everything important sits inside the middle ~70%
+  body = `
+    <defs>
+      <radialGradient id="bg" cx=".5" cy=".58" r=".65"><stop offset="0" stop-color="#ffd27a"/><stop offset=".35" stop-color="#f08a5c"/><stop offset=".75" stop-color="#3b3f8f"/><stop offset="1" stop-color="#14204f"/></radialGradient>
+      <radialGradient id="glowG"><stop offset="0" stop-color="#fff3c4" stop-opacity=".95"/><stop offset=".4" stop-color="#ffd27a" stop-opacity=".5"/><stop offset="1" stop-color="#ffb347" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect width="800" height="800" fill="url(#bg)"/>
+    ${stars(40, 9, 800, 330)}
+    <circle cx="560" cy="560" r="330" fill="url(#glowG)"/>
+    <ellipse cx="400" cy="800" rx="560" ry="190" fill="#4caf50"/><ellipse cx="400" cy="780" rx="560" ry="170" fill="#6cc95a"/>
+    ${place("mila", 300, 690, 1.7)}
+    <g transform="translate(540,640) scale(1.55)">${PROPS.lantern.svg("lan")}</g>
+    ${place("bo", 560, 250, 0.85, -1)}`;
+} else {
+  // banner: 2560x1440, text kept inside the 1546x423 centre "safe area" YouTube shows on every device
+  body = `
+    <defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f2d6b"/><stop offset=".55" stop-color="#f08a6c"/><stop offset="1" stop-color="#ffd59e"/></linearGradient>
+      <radialGradient id="glowG"><stop offset="0" stop-color="#fff3c4" stop-opacity=".9"/><stop offset=".4" stop-color="#ffd27a" stop-opacity=".4"/><stop offset="1" stop-color="#ffb347" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect width="2560" height="1440" fill="url(#bg)"/>
+    ${stars(120, 4, 2560, 520)}
+    <circle cx="1280" cy="760" r="640" fill="url(#glowG)"/>
+    <path d="M 0 1110 Q 640 1040 1280 1110 T 2560 1100 L 2560 1440 L 0 1440 Z" fill="#6cc95a"/>
+    ${place("bruno", 620, 1110, 0.72)}${place("luna", 800, 1105, 0.75)}${place("mila", 990, 1115, 0.75)}
+    ${place("pip", 1570, 1115, 0.75, -1)}${place("fen", 1770, 1105, 0.75, -1)}
+    ${place("bo", 1960, 640, 0.8, -1)}
+    <text x="1280" y="660" text-anchor="middle" font-family="Baloo" font-weight="800" font-size="150" fill="#ffd23f" stroke="#1f2a52" stroke-width="22" paint-order="stroke" letter-spacing="2">${q.get("name") || "Little Light Tales"}</text>
+    <text x="1280" y="760" text-anchor="middle" font-family="Baloo" font-weight="800" font-size="62" fill="#ffffff" stroke="#1f2a52" stroke-width="12" paint-order="stroke">${q.get("tag") || "Short stories of kindness, courage &amp; hope"}</text>`;
+}
+svgEl.innerHTML = body;
+
+// faces and poses: everyone happy, eyes open
+const e = EXPR.happy;
+for (const id of Object.keys(CAST)) {
+  if (!document.getElementById(id + "-eyeL")) continue;
+  const flies = CAST[id][0] === "bird";
+  KINDS[CAST[id][0]].pose(id, { moving: false, airborne: false, look: "ahead", pose: "idle", expr: "happy", talk: 0, walkPhase: 0 }, 0);
+  applyFace(id, id === "mila" ? EXPR.excited : e, 0, 1, "ahead", flies);
+}
+PROPS.lantern.update && document.getElementById("lan-flame") && PROPS.lantern.update("lan", {}, 0);
+window.ready = document.fonts.ready;
+</script>
+</body>
+</html>
