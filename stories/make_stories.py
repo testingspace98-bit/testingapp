@@ -316,6 +316,216 @@ STORIES.append({
     "outro": {"headline": "Every morning is a fresh start!", "sub": "A new story every day"},
 })
 
+# 013 - slow to anger
+STORIES.append({
+    "id": "013-bruno-counts-to-ten", "title": "Bruno Counts to Ten", "lesson": "Stop, breathe, and be gentle.",
+    "scene": "meadow", "music": {"key": "Eb", "bpm": 92, "seed": 11},
+    "characters": {"bruno": char("bruno", 300), "fen": char("fen", 1250, -1)},
+    "props": {"plant": {"kind": "sprout", "x": 560, "grow": 0.45}},
+    "beats": [
+        N("Bruno had grown a little plant. He loved it so much.", cam=cam(["bruno"], 1.3), act={"bruno": {"expr": "happy"}}),
+        S("bruno", "Grow big and strong, little plant!", act={"bruno": {"expr": "excited", "pose": "bounce"}}),
+        N("Then Fen came running after a ball, and... squish!", sfx=[{"name": "whoosh", "at": 0.7}], cam=cam(["bruno", "fen"], 1.05),
+          act={"bruno": {"pose": "idle", "expr": "happy"}, "fen": {"expr": "excited", "move": "walk", "to": 600, "during": [0.05, 0.8]}},
+          props={"plant": {"grow": 0.12, "during": [0.75, 0.95]}}),
+        S("fen", "Oh no! I'm so sorry, Bruno!", act={"fen": {"expr": "scared", "move": "walk", "to": 790, "during": [0.1, 0.6]}}),
+        N("Bruno felt angry. Really, really angry.", cam=cam(["bruno"], 1.45), act={"bruno": {"expr": "angry", "pose": "shiver"}}),
+        S("bruno", "Grrr! I want to roar!"),
+        N("But Bruno stopped. He took a deep breath, and counted to ten.", act={"bruno": {"expr": "determined", "pose": "crouch"}}),
+        S("bruno", "One, two, three... nine, ten. Okay. I'm calm now.", act={"bruno": {"expr": "happy", "pose": "idle"}}),
+        S("bruno", "It was an accident, Fen. Let's plant a new one together!", cam=cam(["bruno", "fen"], 1.1),
+          act={"fen": {"expr": "happy", "pose": "idle"}}),
+        N("So they planted it side by side, and watched it grow.", sfx=SPARKLE, cam=cam(["bruno", "fen"], 1.05),
+          act={"bruno": {"pose": "cheer", "expr": "excited"}, "fen": {"pose": "cheer", "expr": "excited"}},
+          props={"plant": {"grow": 0.6, "during": [0.1, 0.9]}}),
+        N("When you feel angry, stop and breathe. Gentle words make everything better.",
+          act={"bruno": {"pose": "idle", "expr": "happy"}, "fen": {"pose": "idle", "expr": "happy"}}),
+    ],
+    "outro": {"headline": "Stop. Breathe. Be gentle.", "sub": "A new story every day"},
+})
+
+# 014 - humility: lift others up
+STORIES.append({
+    "id": "014-fens-big-boast", "title": "Fen's Big Boast", "lesson": "True greatness lifts others up.",
+    "scene": "meadow", "music": {"key": "A", "bpm": 100, "seed": 12},
+    "characters": {"pip": char("pip", 230), "fen": char("fen", 600, -1), "bruno": char("bruno", 1250, -1)},
+    "beats": [
+        N("Fen the fox loved to show off.", cam=cam(["fen"], 1.35), act={"fen": {"expr": "excited", "pose": "bounce"}}),
+        S("fen", "I'm the fastest! I'm the smartest! I'm the best at everything!", act={"fen": {"pose": "cheer"}}),
+        S("fen", "Look at you, Pip. You're so slow!", cam=cam(["pip", "fen"], 1.15), act={"fen": {"pose": "idle", "expr": "happy"}, "pip": {"expr": "worried"}}),
+        N("Pip's smile faded. He felt very small.", cam=cam(["pip"], 1.4), act={"pip": {"expr": "sad", "look": "down"}}),
+        N("Wise old Bruno had seen everything.", cam=cam(["fen", "bruno"], 1.15),
+          act={"bruno": {"expr": "worried", "move": "walk", "to": 880, "during": [0.0, 0.9]}, "fen": {"face": 1}}),
+        S("bruno", "Fen, being great isn't about being the best.", act={"fen": {"expr": "worried"}}),
+        S("bruno", "Truly great friends lift others up.", act={"bruno": {"expr": "happy"}}),
+        N("Fen thought about it. Then he went back to Pip.", cam=cam(["pip", "fen"], 1.2),
+          act={"fen": {"face": -1, "expr": "determined", "move": "walk", "to": 530, "during": [0.2, 1.0]}}),
+        S("fen", "I'm sorry, Pip. Can we walk together? I'll go slow.", act={"fen": {"expr": "happy"}, "pip": {"look": "ahead", "expr": "happy"}}),
+        S("pip", "I'd like that!", sfx=SPARKLE, act={"pip": {"expr": "excited", "pose": "cheer"}}),
+        N("Real greatness is being kind, and helping others shine.", cam=cam(["pip", "fen"], 1.1),
+          act={"pip": {"pose": "idle", "expr": "happy"}, "fen": {"pose": "bounce"}}),
+    ],
+    "outro": {"headline": "Lift someone up today!", "sub": "A new story every day"},
+})
+
+# 015 - welcome everyone
+STORIES.append({
+    "id": "015-everyone-is-welcome", "title": "Everyone Is Welcome", "lesson": "There is always room for one more friend.",
+    "scene": "meadow", "music": {"key": "G", "bpm": 98, "seed": 13},
+    "characters": {"luna": char("luna", 250), "fen": char("fen", 480, -1), "mila": char("mila", 1250, -1)},
+    "beats": [
+        N("Luna and Fen were playing in the meadow.", cam=cam(["luna", "fen"], 1.2),
+          act={"luna": {"expr": "excited", "pose": "bounce"}, "fen": {"expr": "excited", "pose": "bounce"}}),
+        N("Then a new lamb came by. Her name was Mila.", cam=cam(["fen", "mila"], 1.05),
+          act={"mila": {"expr": "happy", "move": "walk", "to": 860, "during": [0.1, 1.0]}, "luna": {"pose": "idle"}, "fen": {"pose": "idle", "face": 1}}),
+        S("mila", "Hello! Can I play with you?"),
+        S("fen", "Hmm. You're new, and you look different. I don't think so.", act={"fen": {"expr": "determined"}, "mila": {"expr": "sad"}}),
+        N("Mila's eyes filled with tears. She turned to walk away.", cam=cam(["mila"], 1.35),
+          act={"mila": {"face": 1, "look": "down", "move": "walk", "to": 980, "during": [0.4, 1.0]}}),
+        S("luna", "Wait, Mila! Please don't go!", cam=cam(["luna", "mila"], 1.05),
+          act={"luna": {"expr": "worried", "move": "walk", "to": 700, "during": [0.0, 0.8]}, "mila": {"face": -1, "look": "ahead"}}),
+        S("luna", "Everyone is welcome here. Come and play with us!", act={"luna": {"expr": "happy"}, "mila": {"expr": "worried"}}),
+        N("Fen felt sorry. He knew Luna was right.", cam=cam(["fen"], 1.35), act={"fen": {"expr": "sad", "look": "down"}}),
+        S("fen", "I'm sorry, Mila. Will you play with us?", cam=cam(["fen", "mila"], 1.05),
+          act={"fen": {"expr": "happy", "look": "ahead", "move": "walk", "to": 520}}),
+        S("mila", "Yes! Thank you, friends!", sfx=SPARKLE,
+          act={"mila": {"expr": "excited", "pose": "bounce"}, "luna": {"expr": "excited", "pose": "cheer"}, "fen": {"expr": "excited", "pose": "bounce"}}),
+        N("There is always room for one more friend. Make everyone feel welcome.",
+          act={"luna": {"pose": "idle", "expr": "happy"}, "mila": {"pose": "idle", "expr": "happy"}, "fen": {"pose": "idle", "expr": "happy"}}),
+    ],
+    "outro": {"headline": "Make someone feel welcome!", "sub": "A new story every day"},
+})
+
+# 016 - don't worry, you are cared for
+STORIES.append({
+    "id": "016-bo-doesnt-worry", "title": "Bo Doesn't Worry", "lesson": "Don't worry. You are cared for.",
+    "scene": "meadow", "music": {"key": "D", "bpm": 88, "seed": 14, "mood": "calm"},
+    "characters": {"luna": char("luna", 330), "bo": char("bo", 1250, -1, y=650)},
+    "beats": [
+        N("Luna couldn't stop worrying.", cam=cam(["luna"], 1.4), act={"luna": {"expr": "worried"}}),
+        S("luna", "What if it rains tomorrow? What if I can't find food? What if...", act={"luna": {"expr": "scared", "pose": "shiver"}}),
+        N("Her friend Bo flew down and landed nearby.", cam=cam(["luna", "bo"], 1.15),
+          act={"bo": {"move": "fly", "to": [640, 1150], "during": [0.0, 0.9], "expr": "happy"}, "luna": {"pose": "idle", "expr": "worried"}}),
+        S("bo", "Luna, look at me. Do birds worry about tomorrow?", act={"luna": {"look": "up"}}),
+        S("luna", "Hmm... I don't think so.", act={"luna": {"look": "ahead"}}),
+        S("bo", "We sing, we fly, and every day, there is always enough.",
+          act={"bo": {"expr": "excited", "move": "fly", "to": [820, 900], "during": [0.1, 1.0]}}),
+        S("bo", "And look at the flowers! They don't worry, and they're so beautiful.",
+          act={"bo": {"expr": "happy", "move": "fly", "to": [620, 1120], "during": [0.0, 0.8]}, "luna": {"look": "down"}}),
+        N("Luna smiled. She took a deep breath, and let her worries go.", cam=cam(["luna"], 1.3),
+          act={"luna": {"expr": "happy", "look": "ahead"}}),
+        S("luna", "Today is a gift. I'm going to enjoy it!", sfx=SPARKLE, cam=cam(["luna", "bo"], 1.1),
+          act={"luna": {"expr": "excited", "pose": "cheer"}, "bo": {"expr": "excited"}}),
+        N("Don't worry about tomorrow. You are loved and cared for, today and every day.",
+          act={"luna": {"pose": "idle", "expr": "happy"}}),
+    ],
+    "outro": {"headline": "Don't worry. You are cared for.", "sub": "A new story every day"},
+})
+
+# 017 - kind words build up
+STORIES.append({
+    "id": "017-kind-words", "title": "Kind Words", "lesson": "Use your words to lift others up.",
+    "scene": "forest", "music": {"key": "C", "bpm": 94, "seed": 15},
+    "characters": {"fen": char("fen", 220), "mila": char("mila", 560, -1), "pip": char("pip", 1250, -1)},
+    "beats": [
+        N("Mila loved to sing. Today, she sang for her friends.", cam=cam(["mila"], 1.35), act={"mila": {"expr": "excited", "pose": "bounce"}}),
+        S("mila", "La la laaa... oops!", hold=0.3, act={"mila": {"expr": "scared", "pose": "idle"}}),
+        N("Her voice cracked, and Fen started to laugh.", cam=cam(["fen", "mila"], 1.15), act={"fen": {"expr": "excited", "pose": "bounce"}}),
+        S("fen", "Ha ha! That sounded so funny!"),
+        N("Mila's heart sank. She wanted to hide.", cam=cam(["mila"], 1.45), act={"mila": {"expr": "sad", "look": "down"}, "fen": {"pose": "idle"}}),
+        S("pip", "Mila, I loved your song! You were so brave to sing!", cam=cam(["mila", "pip"], 1.15),
+          act={"pip": {"expr": "happy", "move": "walk", "to": 850, "during": [0.0, 0.6]}}),
+        N("Mila looked up. Those kind words warmed her heart.", act={"mila": {"expr": "happy", "look": "ahead"}}),
+        S("fen", "I'm sorry I laughed, Mila. Please sing again. I'll listen!", cam=cam(["fen", "mila"], 1.15),
+          act={"fen": {"expr": "worried"}}),
+        S("mila", "Okay! La la laaa!", sfx=SPARKLE, cam=cam(["fen", "pip"], 1.0),
+          act={"mila": {"expr": "excited", "pose": "bounce"}, "fen": {"expr": "excited", "pose": "bounce"}, "pip": {"expr": "excited", "pose": "bounce"}}),
+        N("Your words are powerful. Use them to lift others up.",
+          act={"mila": {"pose": "idle", "expr": "happy"}, "fen": {"pose": "idle", "expr": "happy"}, "pip": {"pose": "idle", "expr": "happy"}}),
+    ],
+    "outro": {"headline": "Say something kind today!", "sub": "A new story every day"},
+})
+
+# 018 - be happy for others (no jealousy)
+STORIES.append({
+    "id": "018-happy-for-fen", "title": "Happy for Fen", "lesson": "Celebrate your friends. Your time will come.",
+    "scene": "meadow", "music": {"key": "F", "bpm": 96, "seed": 16},
+    "characters": {"luna": char("luna", 200), "fen": char("fen", 920, -1)},
+    "props": {"seedL": {"kind": "sprout", "x": 400, "grow": 0}, "seedF": {"kind": "sprout", "x": 690, "grow": 0}},
+    "beats": [
+        N("Fen and Luna each planted a little seed.", cam=cam(["luna", "fen"], 1.0),
+          act={"luna": {"expr": "happy", "pose": "crouch"}, "fen": {"expr": "happy", "pose": "crouch"}}),
+        N("Days went by. And Fen's seed grew into a beautiful flowering tree!", cam=cam(["luna", "fen"], 1.0),
+          act={"luna": {"pose": "idle"}, "fen": {"pose": "idle", "look": "up"}},
+          props={"seedF": {"grow": 1.0, "during": [0.1, 1.0]}, "seedL": {"grow": 0.2, "during": [0.1, 1.0]}}),
+        S("fen", "Wow! Look at my tree! Luna, come and see!", act={"fen": {"expr": "excited", "pose": "bounce", "look": "ahead"}}),
+        N("But Luna's plant was still very small.", cam=cam(["luna"], 1.4), act={"luna": {"expr": "sad", "look": "down"}, "fen": {"pose": "idle"}}),
+        S("luna", "That's not fair. Why does Fen get the best one?", act={"luna": {"expr": "angry", "look": "ahead"}}),
+        N("Luna felt a little jealous. But then, she remembered something.", act={"luna": {"expr": "worried"}}),
+        S("luna", "Fen is my friend. When he's happy, I can be happy too!", act={"luna": {"expr": "happy"}}),
+        S("luna", "Fen, your tree is beautiful! I'm so happy for you!", cam=cam(["luna", "fen"], 1.05),
+          act={"luna": {"expr": "excited", "move": "walk", "to": 260}}),
+        S("fen", "Thank you, Luna! And look, your plant is growing too!", sfx=SPARKLE,
+          act={"fen": {"expr": "excited"}, "luna": {"pose": "cheer"}}, props={"seedL": {"grow": 0.6, "during": [0.2, 1.0]}}),
+        N("Be happy when good things happen to others. Your time to bloom will come too.",
+          act={"luna": {"pose": "idle", "expr": "happy"}, "fen": {"expr": "happy"}}),
+    ],
+    "outro": {"headline": "Celebrate your friends!", "sub": "A new story every day"},
+})
+
+# 019 - listen to wise advice
+STORIES.append({
+    "id": "019-listen-to-bruno", "title": "Listen to Bruno", "lesson": "Wise advice keeps you safe.",
+    "scene": "river", "sky": "storm", "music": {"key": "Bb", "bpm": 90, "seed": 17},
+    "characters": {"bruno": char("bruno", 100), "fen": char("fen", 315, -1)},
+    "beats": [
+        N("It had rained all day. The river stones were wet and slippery.", rain=0.4, cam=cam(["bruno", "fen"], 1.0),
+          act={"fen": {"expr": "excited", "look": "ahead"}}),
+        S("bruno", "Fen, please don't cross the stones today. They're too slippery.", cam=cam(["bruno", "fen"], 1.3),
+          act={"bruno": {"expr": "worried"}}),
+        S("fen", "I'll be fine! I'm super fast!", act={"fen": {"face": 1, "expr": "excited", "pose": "bounce"}}),
+        N("Fen didn't listen. He jumped onto the first stone, and...", cam=cam(["fen"], 1.2),
+          act={"fen": {"pose": "idle", "move": "jump", "path": [460], "during": [0.4, 0.9]}}),
+        S("fen", "Whoa! Help! I'm slipping!", sfx=[{"name": "whoosh", "at": 0.0}],
+          act={"fen": {"expr": "scared", "pose": "shiver", "move": "slide", "to": 430, "during": [0.0, 0.4]}}),
+        S("bruno", "Hold on, Fen! Grab my paw!", cam=cam(["bruno", "fen"], 1.25),
+          act={"bruno": {"expr": "determined", "move": "walk", "to": 240, "during": [0.0, 0.6]}}),
+        N("Bruno reached out, and pulled Fen back to safety.",
+          act={"bruno": {"move": "walk", "to": 100, "during": [0.0, 0.5]}, "fen": {"pose": "idle", "move": "jump", "path": [315], "during": [0.3, 0.8]}}),
+        S("fen", "Thank you, Bruno. I should have listened to you.", cam=cam(["bruno", "fen"], 1.3),
+          act={"fen": {"face": -1, "expr": "sad"}, "bruno": {"expr": "happy"}}),
+        S("bruno", "We all make mistakes. I'm just glad you're safe!", sky="day", skyFade=3.0, act={"fen": {"expr": "happy"}}),
+        N("Listen to wise advice. It can keep you safe.", sfx=SPARKLE,
+          act={"fen": {"pose": "cheer", "expr": "excited"}, "bruno": {"pose": "cheer", "expr": "excited"}}),
+    ],
+    "outro": {"headline": "Listen to wise words.", "sub": "A new story every day"},
+})
+
+# 020 - keep your promises
+STORIES.append({
+    "id": "020-pip-keeps-his-promise", "title": "Pip Keeps His Promise", "lesson": "Keep your promises. Be faithful.",
+    "scene": "hill", "music": {"key": "E", "bpm": 90, "seed": 18},
+    "characters": {"mila": char("mila", 1040, -1), "pip": char("pip", 150), "bo": char("bo", -150, 1, y=900)},
+    "beats": [
+        N("Pip made a promise to his friend Mila.", cam=cam(["pip"], 1.35), act={"pip": {"expr": "happy"}}),
+        S("pip", "I'll meet you at the top of the hill, so we can watch the sunset together!", act={"pip": {"expr": "excited", "look": "up"}}),
+        N("The hill was big, and Pip was slow. But he started climbing.", cam=cam(["pip"], 1.3),
+          act={"pip": {"expr": "determined", "look": "ahead", "move": "walk", "to": 470, "during": [0.2, 1.0]}}),
+        S("bo", "Hey Pip! Forget the hill. Come and play with me instead!", cam=cam(["pip", "bo"], 1.2),
+          act={"bo": {"expr": "excited", "move": "fly", "to": [330, 1050], "during": [0.0, 0.6]}}),
+        S("pip", "That sounds fun, Bo. But I made a promise to Mila.", act={"pip": {"expr": "happy"}}),
+        S("bo", "A promise? Then go, Pip! You can do it!", act={"bo": {"expr": "happy", "move": "fly", "to": [560, 760], "during": [0.2, 1.0]}}),
+        N("Step by step, Pip kept climbing, as the sky turned gold.", sky="sunset", skyFade=4.0, cam=cam(["pip"], 1.2),
+          act={"pip": {"expr": "determined", "move": "walk", "to": 740, "during": [0.0, 1.0]}}),
+        S("mila", "Pip! You came! You kept your promise!", cam=cam(["pip", "mila"], 1.15), act={"mila": {"expr": "excited", "pose": "bounce"}}),
+        S("pip", "Of course! A promise is a promise.", sfx=SPARKLE, act={"pip": {"expr": "excited", "pose": "cheer"}, "mila": {"pose": "idle", "expr": "happy"}}),
+        N("Together, they watched the most beautiful sunset.", cam=cam(["pip", "mila"], 1.0),
+          act={"pip": {"pose": "idle", "expr": "happy", "face": -1}, "mila": {"expr": "happy"}}),
+        N("Keep your promises. Being faithful is a beautiful gift."),
+    ],
+    "outro": {"headline": "Keep your promises!", "sub": "A new story every day"},
+})
+
 for s in STORIES:
     s.setdefault("narrator", NARRATOR)
     s.setdefault("camera", {"zoom": 1.2})

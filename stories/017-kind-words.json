@@ -1,0 +1,235 @@
+{
+  "id": "017-kind-words",
+  "title": "Kind Words",
+  "lesson": "Use your words to lift others up.",
+  "scene": "forest",
+  "music": {
+    "key": "C",
+    "bpm": 94,
+    "seed": 15
+  },
+  "characters": {
+    "fen": {
+      "kind": "fox",
+      "name": "Fen",
+      "color": "#f08a24",
+      "pill": "#e0761a",
+      "voice": {
+        "id": "am_fenrir",
+        "speed": 1.05
+      },
+      "start": {
+        "x": 220,
+        "face": 1,
+        "scale": 0.85
+      }
+    },
+    "mila": {
+      "kind": "lamb",
+      "name": "Mila",
+      "color": "#fffaf0",
+      "pill": "#a58fb0",
+      "voice": {
+        "id": "bf_emma",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 560,
+        "face": -1,
+        "scale": 0.95
+      }
+    },
+    "pip": {
+      "kind": "turtle",
+      "name": "Pip",
+      "color": "#4caf50",
+      "pill": "#3a9a3e",
+      "voice": {
+        "id": "am_puck",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 1250,
+        "face": -1,
+        "scale": 0.85
+      }
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "Mila loved to sing. Today, she sang for her friends.",
+      "cam": {
+        "follow": [
+          "mila"
+        ],
+        "zoom": 1.35
+      },
+      "act": {
+        "mila": {
+          "expr": "excited",
+          "pose": "bounce"
+        }
+      }
+    },
+    {
+      "speaker": "mila",
+      "text": "La la laaa... oops!",
+      "hold": 0.3,
+      "act": {
+        "mila": {
+          "expr": "scared",
+          "pose": "idle"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Her voice cracked, and Fen started to laugh.",
+      "cam": {
+        "follow": [
+          "fen",
+          "mila"
+        ],
+        "zoom": 1.15
+      },
+      "act": {
+        "fen": {
+          "expr": "excited",
+          "pose": "bounce"
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "Ha ha! That sounded so funny!"
+    },
+    {
+      "speaker": "narrator",
+      "text": "Mila's heart sank. She wanted to hide.",
+      "cam": {
+        "follow": [
+          "mila"
+        ],
+        "zoom": 1.45
+      },
+      "act": {
+        "mila": {
+          "expr": "sad",
+          "look": "down"
+        },
+        "fen": {
+          "pose": "idle"
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "Mila, I loved your song! You were so brave to sing!",
+      "cam": {
+        "follow": [
+          "mila",
+          "pip"
+        ],
+        "zoom": 1.15
+      },
+      "act": {
+        "pip": {
+          "expr": "happy",
+          "move": "walk",
+          "to": 850,
+          "during": [
+            0.0,
+            0.6
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Mila looked up. Those kind words warmed her heart.",
+      "act": {
+        "mila": {
+          "expr": "happy",
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "I'm sorry I laughed, Mila. Please sing again. I'll listen!",
+      "cam": {
+        "follow": [
+          "fen",
+          "mila"
+        ],
+        "zoom": 1.15
+      },
+      "act": {
+        "fen": {
+          "expr": "worried"
+        }
+      }
+    },
+    {
+      "speaker": "mila",
+      "text": "Okay! La la laaa!",
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "cam": {
+        "follow": [
+          "fen",
+          "pip"
+        ],
+        "zoom": 1.0
+      },
+      "act": {
+        "mila": {
+          "expr": "excited",
+          "pose": "bounce"
+        },
+        "fen": {
+          "expr": "excited",
+          "pose": "bounce"
+        },
+        "pip": {
+          "expr": "excited",
+          "pose": "bounce"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Your words are powerful. Use them to lift others up.",
+      "act": {
+        "mila": {
+          "pose": "idle",
+          "expr": "happy"
+        },
+        "fen": {
+          "pose": "idle",
+          "expr": "happy"
+        },
+        "pip": {
+          "pose": "idle",
+          "expr": "happy"
+        }
+      }
+    }
+  ],
+  "outro": {
+    "headline": "Say something kind today!",
+    "sub": "A new story every day"
+  },
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "camera": {
+    "zoom": 1.2
+  }
+}

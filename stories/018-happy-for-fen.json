@@ -1,0 +1,241 @@
+{
+  "id": "018-happy-for-fen",
+  "title": "Happy for Fen",
+  "lesson": "Celebrate your friends. Your time will come.",
+  "scene": "meadow",
+  "music": {
+    "key": "F",
+    "bpm": 96,
+    "seed": 16
+  },
+  "characters": {
+    "luna": {
+      "kind": "bunny",
+      "name": "Luna",
+      "color": "#f4eaff",
+      "pill": "#9a7fd1",
+      "voice": {
+        "id": "af_bella",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 200,
+        "face": 1,
+        "scale": 0.85
+      }
+    },
+    "fen": {
+      "kind": "fox",
+      "name": "Fen",
+      "color": "#f08a24",
+      "pill": "#e0761a",
+      "voice": {
+        "id": "am_fenrir",
+        "speed": 1.05
+      },
+      "start": {
+        "x": 920,
+        "face": -1,
+        "scale": 0.85
+      }
+    }
+  },
+  "props": {
+    "seedL": {
+      "kind": "sprout",
+      "x": 400,
+      "grow": 0
+    },
+    "seedF": {
+      "kind": "sprout",
+      "x": 690,
+      "grow": 0
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "Fen and Luna each planted a little seed.",
+      "cam": {
+        "follow": [
+          "luna",
+          "fen"
+        ],
+        "zoom": 1.0
+      },
+      "act": {
+        "luna": {
+          "expr": "happy",
+          "pose": "crouch"
+        },
+        "fen": {
+          "expr": "happy",
+          "pose": "crouch"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Days went by. And Fen's seed grew into a beautiful flowering tree!",
+      "cam": {
+        "follow": [
+          "luna",
+          "fen"
+        ],
+        "zoom": 1.0
+      },
+      "act": {
+        "luna": {
+          "pose": "idle"
+        },
+        "fen": {
+          "pose": "idle",
+          "look": "up"
+        }
+      },
+      "props": {
+        "seedF": {
+          "grow": 1.0,
+          "during": [
+            0.1,
+            1.0
+          ]
+        },
+        "seedL": {
+          "grow": 0.2,
+          "during": [
+            0.1,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "Wow! Look at my tree! Luna, come and see!",
+      "act": {
+        "fen": {
+          "expr": "excited",
+          "pose": "bounce",
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "But Luna's plant was still very small.",
+      "cam": {
+        "follow": [
+          "luna"
+        ],
+        "zoom": 1.4
+      },
+      "act": {
+        "luna": {
+          "expr": "sad",
+          "look": "down"
+        },
+        "fen": {
+          "pose": "idle"
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "That's not fair. Why does Fen get the best one?",
+      "act": {
+        "luna": {
+          "expr": "angry",
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Luna felt a little jealous. But then, she remembered something.",
+      "act": {
+        "luna": {
+          "expr": "worried"
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "Fen is my friend. When he's happy, I can be happy too!",
+      "act": {
+        "luna": {
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "Fen, your tree is beautiful! I'm so happy for you!",
+      "cam": {
+        "follow": [
+          "luna",
+          "fen"
+        ],
+        "zoom": 1.05
+      },
+      "act": {
+        "luna": {
+          "expr": "excited",
+          "move": "walk",
+          "to": 260
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "Thank you, Luna! And look, your plant is growing too!",
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "act": {
+        "fen": {
+          "expr": "excited"
+        },
+        "luna": {
+          "pose": "cheer"
+        }
+      },
+      "props": {
+        "seedL": {
+          "grow": 0.6,
+          "during": [
+            0.2,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Be happy when good things happen to others. Your time to bloom will come too.",
+      "act": {
+        "luna": {
+          "pose": "idle",
+          "expr": "happy"
+        },
+        "fen": {
+          "expr": "happy"
+        }
+      }
+    }
+  ],
+  "outro": {
+    "headline": "Celebrate your friends!",
+    "sub": "A new story every day"
+  },
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "camera": {
+    "zoom": 1.2
+  }
+}

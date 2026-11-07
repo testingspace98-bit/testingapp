@@ -1,0 +1,251 @@
+{
+  "id": "013-bruno-counts-to-ten",
+  "title": "Bruno Counts to Ten",
+  "lesson": "Stop, breathe, and be gentle.",
+  "scene": "meadow",
+  "music": {
+    "key": "Eb",
+    "bpm": 92,
+    "seed": 11
+  },
+  "characters": {
+    "bruno": {
+      "kind": "bear",
+      "name": "Bruno",
+      "color": "#9a6440",
+      "pill": "#8a5532",
+      "voice": {
+        "id": "am_michael",
+        "speed": 0.92
+      },
+      "start": {
+        "x": 300,
+        "face": 1,
+        "scale": 0.82
+      }
+    },
+    "fen": {
+      "kind": "fox",
+      "name": "Fen",
+      "color": "#f08a24",
+      "pill": "#e0761a",
+      "voice": {
+        "id": "am_fenrir",
+        "speed": 1.05
+      },
+      "start": {
+        "x": 1250,
+        "face": -1,
+        "scale": 0.85
+      }
+    }
+  },
+  "props": {
+    "plant": {
+      "kind": "sprout",
+      "x": 560,
+      "grow": 0.45
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "Bruno had grown a little plant. He loved it so much.",
+      "cam": {
+        "follow": [
+          "bruno"
+        ],
+        "zoom": 1.3
+      },
+      "act": {
+        "bruno": {
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "bruno",
+      "text": "Grow big and strong, little plant!",
+      "act": {
+        "bruno": {
+          "expr": "excited",
+          "pose": "bounce"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Then Fen came running after a ball, and... squish!",
+      "sfx": [
+        {
+          "name": "whoosh",
+          "at": 0.7
+        }
+      ],
+      "cam": {
+        "follow": [
+          "bruno",
+          "fen"
+        ],
+        "zoom": 1.05
+      },
+      "act": {
+        "bruno": {
+          "pose": "idle",
+          "expr": "happy"
+        },
+        "fen": {
+          "expr": "excited",
+          "move": "walk",
+          "to": 600,
+          "during": [
+            0.05,
+            0.8
+          ]
+        }
+      },
+      "props": {
+        "plant": {
+          "grow": 0.12,
+          "during": [
+            0.75,
+            0.95
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "Oh no! I'm so sorry, Bruno!",
+      "act": {
+        "fen": {
+          "expr": "scared",
+          "move": "walk",
+          "to": 790,
+          "during": [
+            0.1,
+            0.6
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Bruno felt angry. Really, really angry.",
+      "cam": {
+        "follow": [
+          "bruno"
+        ],
+        "zoom": 1.45
+      },
+      "act": {
+        "bruno": {
+          "expr": "angry",
+          "pose": "shiver"
+        }
+      }
+    },
+    {
+      "speaker": "bruno",
+      "text": "Grrr! I want to roar!"
+    },
+    {
+      "speaker": "narrator",
+      "text": "But Bruno stopped. He took a deep breath, and counted to ten.",
+      "act": {
+        "bruno": {
+          "expr": "determined",
+          "pose": "crouch"
+        }
+      }
+    },
+    {
+      "speaker": "bruno",
+      "text": "One, two, three... nine, ten. Okay. I'm calm now.",
+      "act": {
+        "bruno": {
+          "expr": "happy",
+          "pose": "idle"
+        }
+      }
+    },
+    {
+      "speaker": "bruno",
+      "text": "It was an accident, Fen. Let's plant a new one together!",
+      "cam": {
+        "follow": [
+          "bruno",
+          "fen"
+        ],
+        "zoom": 1.1
+      },
+      "act": {
+        "fen": {
+          "expr": "happy",
+          "pose": "idle"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "So they planted it side by side, and watched it grow.",
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "cam": {
+        "follow": [
+          "bruno",
+          "fen"
+        ],
+        "zoom": 1.05
+      },
+      "act": {
+        "bruno": {
+          "pose": "cheer",
+          "expr": "excited"
+        },
+        "fen": {
+          "pose": "cheer",
+          "expr": "excited"
+        }
+      },
+      "props": {
+        "plant": {
+          "grow": 0.6,
+          "during": [
+            0.1,
+            0.9
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "When you feel angry, stop and breathe. Gentle words make everything better.",
+      "act": {
+        "bruno": {
+          "pose": "idle",
+          "expr": "happy"
+        },
+        "fen": {
+          "pose": "idle",
+          "expr": "happy"
+        }
+      }
+    }
+  ],
+  "outro": {
+    "headline": "Stop. Breathe. Be gentle.",
+    "sub": "A new story every day"
+  },
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "camera": {
+    "zoom": 1.2
+  }
+}

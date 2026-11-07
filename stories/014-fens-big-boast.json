@@ -1,0 +1,247 @@
+{
+  "id": "014-fens-big-boast",
+  "title": "Fen's Big Boast",
+  "lesson": "True greatness lifts others up.",
+  "scene": "meadow",
+  "music": {
+    "key": "A",
+    "bpm": 100,
+    "seed": 12
+  },
+  "characters": {
+    "pip": {
+      "kind": "turtle",
+      "name": "Pip",
+      "color": "#4caf50",
+      "pill": "#3a9a3e",
+      "voice": {
+        "id": "am_puck",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 230,
+        "face": 1,
+        "scale": 0.85
+      }
+    },
+    "fen": {
+      "kind": "fox",
+      "name": "Fen",
+      "color": "#f08a24",
+      "pill": "#e0761a",
+      "voice": {
+        "id": "am_fenrir",
+        "speed": 1.05
+      },
+      "start": {
+        "x": 600,
+        "face": -1,
+        "scale": 0.85
+      }
+    },
+    "bruno": {
+      "kind": "bear",
+      "name": "Bruno",
+      "color": "#9a6440",
+      "pill": "#8a5532",
+      "voice": {
+        "id": "am_michael",
+        "speed": 0.92
+      },
+      "start": {
+        "x": 1250,
+        "face": -1,
+        "scale": 0.82
+      }
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "Fen the fox loved to show off.",
+      "cam": {
+        "follow": [
+          "fen"
+        ],
+        "zoom": 1.35
+      },
+      "act": {
+        "fen": {
+          "expr": "excited",
+          "pose": "bounce"
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "I'm the fastest! I'm the smartest! I'm the best at everything!",
+      "act": {
+        "fen": {
+          "pose": "cheer"
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "Look at you, Pip. You're so slow!",
+      "cam": {
+        "follow": [
+          "pip",
+          "fen"
+        ],
+        "zoom": 1.15
+      },
+      "act": {
+        "fen": {
+          "pose": "idle",
+          "expr": "happy"
+        },
+        "pip": {
+          "expr": "worried"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Pip's smile faded. He felt very small.",
+      "cam": {
+        "follow": [
+          "pip"
+        ],
+        "zoom": 1.4
+      },
+      "act": {
+        "pip": {
+          "expr": "sad",
+          "look": "down"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Wise old Bruno had seen everything.",
+      "cam": {
+        "follow": [
+          "fen",
+          "bruno"
+        ],
+        "zoom": 1.15
+      },
+      "act": {
+        "bruno": {
+          "expr": "worried",
+          "move": "walk",
+          "to": 880,
+          "during": [
+            0.0,
+            0.9
+          ]
+        },
+        "fen": {
+          "face": 1
+        }
+      }
+    },
+    {
+      "speaker": "bruno",
+      "text": "Fen, being great isn't about being the best.",
+      "act": {
+        "fen": {
+          "expr": "worried"
+        }
+      }
+    },
+    {
+      "speaker": "bruno",
+      "text": "Truly great friends lift others up.",
+      "act": {
+        "bruno": {
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Fen thought about it. Then he went back to Pip.",
+      "cam": {
+        "follow": [
+          "pip",
+          "fen"
+        ],
+        "zoom": 1.2
+      },
+      "act": {
+        "fen": {
+          "face": -1,
+          "expr": "determined",
+          "move": "walk",
+          "to": 530,
+          "during": [
+            0.2,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "I'm sorry, Pip. Can we walk together? I'll go slow.",
+      "act": {
+        "fen": {
+          "expr": "happy"
+        },
+        "pip": {
+          "look": "ahead",
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "I'd like that!",
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "act": {
+        "pip": {
+          "expr": "excited",
+          "pose": "cheer"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Real greatness is being kind, and helping others shine.",
+      "cam": {
+        "follow": [
+          "pip",
+          "fen"
+        ],
+        "zoom": 1.1
+      },
+      "act": {
+        "pip": {
+          "pose": "idle",
+          "expr": "happy"
+        },
+        "fen": {
+          "pose": "bounce"
+        }
+      }
+    }
+  ],
+  "outro": {
+    "headline": "Lift someone up today!",
+    "sub": "A new story every day"
+  },
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "camera": {
+    "zoom": 1.2
+  }
+}

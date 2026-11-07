@@ -1,0 +1,245 @@
+{
+  "id": "019-listen-to-bruno",
+  "title": "Listen to Bruno",
+  "lesson": "Wise advice keeps you safe.",
+  "scene": "river",
+  "sky": "storm",
+  "music": {
+    "key": "Bb",
+    "bpm": 90,
+    "seed": 17
+  },
+  "characters": {
+    "bruno": {
+      "kind": "bear",
+      "name": "Bruno",
+      "color": "#9a6440",
+      "pill": "#8a5532",
+      "voice": {
+        "id": "am_michael",
+        "speed": 0.92
+      },
+      "start": {
+        "x": 100,
+        "face": 1,
+        "scale": 0.82
+      }
+    },
+    "fen": {
+      "kind": "fox",
+      "name": "Fen",
+      "color": "#f08a24",
+      "pill": "#e0761a",
+      "voice": {
+        "id": "am_fenrir",
+        "speed": 1.05
+      },
+      "start": {
+        "x": 315,
+        "face": -1,
+        "scale": 0.85
+      }
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "It had rained all day. The river stones were wet and slippery.",
+      "rain": 0.4,
+      "cam": {
+        "follow": [
+          "bruno",
+          "fen"
+        ],
+        "zoom": 1.0
+      },
+      "act": {
+        "fen": {
+          "expr": "excited",
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "bruno",
+      "text": "Fen, please don't cross the stones today. They're too slippery.",
+      "cam": {
+        "follow": [
+          "bruno",
+          "fen"
+        ],
+        "zoom": 1.3
+      },
+      "act": {
+        "bruno": {
+          "expr": "worried"
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "I'll be fine! I'm super fast!",
+      "act": {
+        "fen": {
+          "face": 1,
+          "expr": "excited",
+          "pose": "bounce"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Fen didn't listen. He jumped onto the first stone, and...",
+      "cam": {
+        "follow": [
+          "fen"
+        ],
+        "zoom": 1.2
+      },
+      "act": {
+        "fen": {
+          "pose": "idle",
+          "move": "jump",
+          "path": [
+            460
+          ],
+          "during": [
+            0.4,
+            0.9
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "Whoa! Help! I'm slipping!",
+      "sfx": [
+        {
+          "name": "whoosh",
+          "at": 0.0
+        }
+      ],
+      "act": {
+        "fen": {
+          "expr": "scared",
+          "pose": "shiver",
+          "move": "slide",
+          "to": 430,
+          "during": [
+            0.0,
+            0.4
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "bruno",
+      "text": "Hold on, Fen! Grab my paw!",
+      "cam": {
+        "follow": [
+          "bruno",
+          "fen"
+        ],
+        "zoom": 1.25
+      },
+      "act": {
+        "bruno": {
+          "expr": "determined",
+          "move": "walk",
+          "to": 240,
+          "during": [
+            0.0,
+            0.6
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Bruno reached out, and pulled Fen back to safety.",
+      "act": {
+        "bruno": {
+          "move": "walk",
+          "to": 100,
+          "during": [
+            0.0,
+            0.5
+          ]
+        },
+        "fen": {
+          "pose": "idle",
+          "move": "jump",
+          "path": [
+            315
+          ],
+          "during": [
+            0.3,
+            0.8
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "Thank you, Bruno. I should have listened to you.",
+      "cam": {
+        "follow": [
+          "bruno",
+          "fen"
+        ],
+        "zoom": 1.3
+      },
+      "act": {
+        "fen": {
+          "face": -1,
+          "expr": "sad"
+        },
+        "bruno": {
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "bruno",
+      "text": "We all make mistakes. I'm just glad you're safe!",
+      "sky": "day",
+      "skyFade": 3.0,
+      "act": {
+        "fen": {
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Listen to wise advice. It can keep you safe.",
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "act": {
+        "fen": {
+          "pose": "cheer",
+          "expr": "excited"
+        },
+        "bruno": {
+          "pose": "cheer",
+          "expr": "excited"
+        }
+      }
+    }
+  ],
+  "outro": {
+    "headline": "Listen to wise words.",
+    "sub": "A new story every day"
+  },
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "camera": {
+    "zoom": 1.2
+  }
+}

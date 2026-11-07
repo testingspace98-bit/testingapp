@@ -1,0 +1,255 @@
+{
+  "id": "020-pip-keeps-his-promise",
+  "title": "Pip Keeps His Promise",
+  "lesson": "Keep your promises. Be faithful.",
+  "scene": "hill",
+  "music": {
+    "key": "E",
+    "bpm": 90,
+    "seed": 18
+  },
+  "characters": {
+    "mila": {
+      "kind": "lamb",
+      "name": "Mila",
+      "color": "#fffaf0",
+      "pill": "#a58fb0",
+      "voice": {
+        "id": "bf_emma",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 1040,
+        "face": -1,
+        "scale": 0.95
+      }
+    },
+    "pip": {
+      "kind": "turtle",
+      "name": "Pip",
+      "color": "#4caf50",
+      "pill": "#3a9a3e",
+      "voice": {
+        "id": "am_puck",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 150,
+        "face": 1,
+        "scale": 0.85
+      }
+    },
+    "bo": {
+      "kind": "bird",
+      "name": "Bo",
+      "color": "#3d9df3",
+      "voice": {
+        "id": "af_kore",
+        "speed": 1.0
+      },
+      "start": {
+        "x": -150,
+        "face": 1,
+        "scale": 0.9,
+        "y": 900
+      }
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "Pip made a promise to his friend Mila.",
+      "cam": {
+        "follow": [
+          "pip"
+        ],
+        "zoom": 1.35
+      },
+      "act": {
+        "pip": {
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "I'll meet you at the top of the hill, so we can watch the sunset together!",
+      "act": {
+        "pip": {
+          "expr": "excited",
+          "look": "up"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "The hill was big, and Pip was slow. But he started climbing.",
+      "cam": {
+        "follow": [
+          "pip"
+        ],
+        "zoom": 1.3
+      },
+      "act": {
+        "pip": {
+          "expr": "determined",
+          "look": "ahead",
+          "move": "walk",
+          "to": 470,
+          "during": [
+            0.2,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "bo",
+      "text": "Hey Pip! Forget the hill. Come and play with me instead!",
+      "cam": {
+        "follow": [
+          "pip",
+          "bo"
+        ],
+        "zoom": 1.2
+      },
+      "act": {
+        "bo": {
+          "expr": "excited",
+          "move": "fly",
+          "to": [
+            330,
+            1050
+          ],
+          "during": [
+            0.0,
+            0.6
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "That sounds fun, Bo. But I made a promise to Mila.",
+      "act": {
+        "pip": {
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "bo",
+      "text": "A promise? Then go, Pip! You can do it!",
+      "act": {
+        "bo": {
+          "expr": "happy",
+          "move": "fly",
+          "to": [
+            560,
+            760
+          ],
+          "during": [
+            0.2,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Step by step, Pip kept climbing, as the sky turned gold.",
+      "sky": "sunset",
+      "skyFade": 4.0,
+      "cam": {
+        "follow": [
+          "pip"
+        ],
+        "zoom": 1.2
+      },
+      "act": {
+        "pip": {
+          "expr": "determined",
+          "move": "walk",
+          "to": 740,
+          "during": [
+            0.0,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "mila",
+      "text": "Pip! You came! You kept your promise!",
+      "cam": {
+        "follow": [
+          "pip",
+          "mila"
+        ],
+        "zoom": 1.15
+      },
+      "act": {
+        "mila": {
+          "expr": "excited",
+          "pose": "bounce"
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "Of course! A promise is a promise.",
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "act": {
+        "pip": {
+          "expr": "excited",
+          "pose": "cheer"
+        },
+        "mila": {
+          "pose": "idle",
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Together, they watched the most beautiful sunset.",
+      "cam": {
+        "follow": [
+          "pip",
+          "mila"
+        ],
+        "zoom": 1.0
+      },
+      "act": {
+        "pip": {
+          "pose": "idle",
+          "expr": "happy",
+          "face": -1
+        },
+        "mila": {
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Keep your promises. Being faithful is a beautiful gift."
+    }
+  ],
+  "outro": {
+    "headline": "Keep your promises!",
+    "sub": "A new story every day"
+  },
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "camera": {
+    "zoom": 1.2
+  }
+}

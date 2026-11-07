@@ -1,0 +1,274 @@
+{
+  "id": "015-everyone-is-welcome",
+  "title": "Everyone Is Welcome",
+  "lesson": "There is always room for one more friend.",
+  "scene": "meadow",
+  "music": {
+    "key": "G",
+    "bpm": 98,
+    "seed": 13
+  },
+  "characters": {
+    "luna": {
+      "kind": "bunny",
+      "name": "Luna",
+      "color": "#f4eaff",
+      "pill": "#9a7fd1",
+      "voice": {
+        "id": "af_bella",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 250,
+        "face": 1,
+        "scale": 0.85
+      }
+    },
+    "fen": {
+      "kind": "fox",
+      "name": "Fen",
+      "color": "#f08a24",
+      "pill": "#e0761a",
+      "voice": {
+        "id": "am_fenrir",
+        "speed": 1.05
+      },
+      "start": {
+        "x": 480,
+        "face": -1,
+        "scale": 0.85
+      }
+    },
+    "mila": {
+      "kind": "lamb",
+      "name": "Mila",
+      "color": "#fffaf0",
+      "pill": "#a58fb0",
+      "voice": {
+        "id": "bf_emma",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 1250,
+        "face": -1,
+        "scale": 0.95
+      }
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "Luna and Fen were playing in the meadow.",
+      "cam": {
+        "follow": [
+          "luna",
+          "fen"
+        ],
+        "zoom": 1.2
+      },
+      "act": {
+        "luna": {
+          "expr": "excited",
+          "pose": "bounce"
+        },
+        "fen": {
+          "expr": "excited",
+          "pose": "bounce"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Then a new lamb came by. Her name was Mila.",
+      "cam": {
+        "follow": [
+          "fen",
+          "mila"
+        ],
+        "zoom": 1.05
+      },
+      "act": {
+        "mila": {
+          "expr": "happy",
+          "move": "walk",
+          "to": 860,
+          "during": [
+            0.1,
+            1.0
+          ]
+        },
+        "luna": {
+          "pose": "idle"
+        },
+        "fen": {
+          "pose": "idle",
+          "face": 1
+        }
+      }
+    },
+    {
+      "speaker": "mila",
+      "text": "Hello! Can I play with you?"
+    },
+    {
+      "speaker": "fen",
+      "text": "Hmm. You're new, and you look different. I don't think so.",
+      "act": {
+        "fen": {
+          "expr": "determined"
+        },
+        "mila": {
+          "expr": "sad"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Mila's eyes filled with tears. She turned to walk away.",
+      "cam": {
+        "follow": [
+          "mila"
+        ],
+        "zoom": 1.35
+      },
+      "act": {
+        "mila": {
+          "face": 1,
+          "look": "down",
+          "move": "walk",
+          "to": 980,
+          "during": [
+            0.4,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "Wait, Mila! Please don't go!",
+      "cam": {
+        "follow": [
+          "luna",
+          "mila"
+        ],
+        "zoom": 1.05
+      },
+      "act": {
+        "luna": {
+          "expr": "worried",
+          "move": "walk",
+          "to": 700,
+          "during": [
+            0.0,
+            0.8
+          ]
+        },
+        "mila": {
+          "face": -1,
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "Everyone is welcome here. Come and play with us!",
+      "act": {
+        "luna": {
+          "expr": "happy"
+        },
+        "mila": {
+          "expr": "worried"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Fen felt sorry. He knew Luna was right.",
+      "cam": {
+        "follow": [
+          "fen"
+        ],
+        "zoom": 1.35
+      },
+      "act": {
+        "fen": {
+          "expr": "sad",
+          "look": "down"
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "I'm sorry, Mila. Will you play with us?",
+      "cam": {
+        "follow": [
+          "fen",
+          "mila"
+        ],
+        "zoom": 1.05
+      },
+      "act": {
+        "fen": {
+          "expr": "happy",
+          "look": "ahead",
+          "move": "walk",
+          "to": 520
+        }
+      }
+    },
+    {
+      "speaker": "mila",
+      "text": "Yes! Thank you, friends!",
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "act": {
+        "mila": {
+          "expr": "excited",
+          "pose": "bounce"
+        },
+        "luna": {
+          "expr": "excited",
+          "pose": "cheer"
+        },
+        "fen": {
+          "expr": "excited",
+          "pose": "bounce"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "There is always room for one more friend. Make everyone feel welcome.",
+      "act": {
+        "luna": {
+          "pose": "idle",
+          "expr": "happy"
+        },
+        "mila": {
+          "pose": "idle",
+          "expr": "happy"
+        },
+        "fen": {
+          "pose": "idle",
+          "expr": "happy"
+        }
+      }
+    }
+  ],
+  "outro": {
+    "headline": "Make someone feel welcome!",
+    "sub": "A new story every day"
+  },
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "camera": {
+    "zoom": 1.2
+  }
+}

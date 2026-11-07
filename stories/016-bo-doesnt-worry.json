@@ -1,0 +1,220 @@
+{
+  "id": "016-bo-doesnt-worry",
+  "title": "Bo Doesn't Worry",
+  "lesson": "Don't worry. You are cared for.",
+  "scene": "meadow",
+  "music": {
+    "key": "D",
+    "bpm": 88,
+    "seed": 14,
+    "mood": "calm"
+  },
+  "characters": {
+    "luna": {
+      "kind": "bunny",
+      "name": "Luna",
+      "color": "#f4eaff",
+      "pill": "#9a7fd1",
+      "voice": {
+        "id": "af_bella",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 330,
+        "face": 1,
+        "scale": 0.85
+      }
+    },
+    "bo": {
+      "kind": "bird",
+      "name": "Bo",
+      "color": "#3d9df3",
+      "voice": {
+        "id": "af_kore",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 1250,
+        "face": -1,
+        "scale": 0.9,
+        "y": 650
+      }
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "Luna couldn't stop worrying.",
+      "cam": {
+        "follow": [
+          "luna"
+        ],
+        "zoom": 1.4
+      },
+      "act": {
+        "luna": {
+          "expr": "worried"
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "What if it rains tomorrow? What if I can't find food? What if...",
+      "act": {
+        "luna": {
+          "expr": "scared",
+          "pose": "shiver"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Her friend Bo flew down and landed nearby.",
+      "cam": {
+        "follow": [
+          "luna",
+          "bo"
+        ],
+        "zoom": 1.15
+      },
+      "act": {
+        "bo": {
+          "move": "fly",
+          "to": [
+            640,
+            1150
+          ],
+          "during": [
+            0.0,
+            0.9
+          ],
+          "expr": "happy"
+        },
+        "luna": {
+          "pose": "idle",
+          "expr": "worried"
+        }
+      }
+    },
+    {
+      "speaker": "bo",
+      "text": "Luna, look at me. Do birds worry about tomorrow?",
+      "act": {
+        "luna": {
+          "look": "up"
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "Hmm... I don't think so.",
+      "act": {
+        "luna": {
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "bo",
+      "text": "We sing, we fly, and every day, there is always enough.",
+      "act": {
+        "bo": {
+          "expr": "excited",
+          "move": "fly",
+          "to": [
+            820,
+            900
+          ],
+          "during": [
+            0.1,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "bo",
+      "text": "And look at the flowers! They don't worry, and they're so beautiful.",
+      "act": {
+        "bo": {
+          "expr": "happy",
+          "move": "fly",
+          "to": [
+            620,
+            1120
+          ],
+          "during": [
+            0.0,
+            0.8
+          ]
+        },
+        "luna": {
+          "look": "down"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Luna smiled. She took a deep breath, and let her worries go.",
+      "cam": {
+        "follow": [
+          "luna"
+        ],
+        "zoom": 1.3
+      },
+      "act": {
+        "luna": {
+          "expr": "happy",
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "Today is a gift. I'm going to enjoy it!",
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "cam": {
+        "follow": [
+          "luna",
+          "bo"
+        ],
+        "zoom": 1.1
+      },
+      "act": {
+        "luna": {
+          "expr": "excited",
+          "pose": "cheer"
+        },
+        "bo": {
+          "expr": "excited"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Don't worry about tomorrow. You are loved and cared for, today and every day.",
+      "act": {
+        "luna": {
+          "pose": "idle",
+          "expr": "happy"
+        }
+      }
+    }
+  ],
+  "outro": {
+    "headline": "Don't worry. You are cared for.",
+    "sub": "A new story every day"
+  },
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "camera": {
+    "zoom": 1.2
+  }
+}
