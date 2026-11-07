@@ -1,0 +1,348 @@
+{
+  "id": "p01-the-leaky-basket",
+  "title": "The Leaky Basket",
+  "lesson": "Your cracks can grow flowers.",
+  "scene": "meadow",
+  "sky": "dawn",
+  "pause": 0.6,
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.88
+  },
+  "music": {
+    "key": "F",
+    "bpm": 76,
+    "seed": 21,
+    "mood": "calm"
+  },
+  "characters": {
+    "luna": {
+      "kind": "bunny",
+      "name": "Luna",
+      "color": "#f4eaff",
+      "pill": "#9a7fd1",
+      "voice": {
+        "id": "af_bella",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 160,
+        "face": 1,
+        "scale": 0.85
+      }
+    },
+    "bruno": {
+      "kind": "bear",
+      "name": "Grandpa Bruno",
+      "color": "#9a6440",
+      "pill": "#8a5532",
+      "voice": {
+        "id": "am_michael",
+        "speed": 0.92
+      },
+      "start": {
+        "x": 1250,
+        "face": -1,
+        "scale": 0.82
+      }
+    }
+  },
+  "props": {
+    "basket": {
+      "kind": "basket",
+      "fruit": "seed",
+      "scale": 0.55,
+      "full": 1,
+      "attach": {
+        "to": "luna",
+        "dx": 75,
+        "dy": -60
+      }
+    },
+    "f0": {
+      "kind": "sprout",
+      "x": 230,
+      "scale": 0.36,
+      "grow": 0,
+      "behind": true
+    },
+    "f1": {
+      "kind": "sprout",
+      "x": 370,
+      "scale": 0.36,
+      "grow": 0,
+      "behind": true
+    },
+    "f2": {
+      "kind": "sprout",
+      "x": 500,
+      "scale": 0.36,
+      "grow": 0,
+      "behind": true
+    },
+    "f3": {
+      "kind": "sprout",
+      "x": 640,
+      "scale": 0.36,
+      "grow": 0,
+      "behind": true
+    },
+    "f4": {
+      "kind": "sprout",
+      "x": 770,
+      "scale": 0.36,
+      "grow": 0,
+      "behind": true
+    },
+    "f5": {
+      "kind": "sprout",
+      "x": 900,
+      "scale": 0.36,
+      "grow": 0,
+      "behind": true
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "Every morning, Luna carried seeds across the meadow to Grandpa Bruno's garden.",
+      "cam": {
+        "follow": [
+          "luna"
+        ],
+        "zoom": 1.2
+      },
+      "act": {
+        "luna": {
+          "expr": "happy",
+          "move": "walk",
+          "to": 820,
+          "during": [
+            0.1,
+            1.0
+          ]
+        }
+      },
+      "props": {
+        "basket": {
+          "full": 0.4,
+          "during": [
+            0.1,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "But her basket had a little hole. And along the way, seeds always fell out.",
+      "cam": {
+        "follow": [
+          "luna"
+        ],
+        "zoom": 1.35
+      },
+      "act": {
+        "luna": {
+          "expr": "worried",
+          "look": "down"
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "Oh no. I lost half the seeds again. I'm so clumsy.",
+      "act": {
+        "luna": {
+          "expr": "sad"
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "Grandpa Bruno, I'm sorry. I'm just not good enough.",
+      "cam": {
+        "follow": [
+          "luna",
+          "bruno"
+        ],
+        "zoom": 1.1
+      },
+      "act": {
+        "bruno": {
+          "expr": "happy",
+          "move": "walk",
+          "to": 1010,
+          "during": [
+            0.0,
+            0.7
+          ]
+        },
+        "luna": {
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "bruno",
+      "text": "Shh, little one. Wait, and I'll show you something.",
+      "tempo": 0.95
+    },
+    {
+      "speaker": "narrator",
+      "text": "Weeks went by. Then one bright morning, they walked the path together.",
+      "sky": "day",
+      "skyFade": 3.0,
+      "cam": {
+        "follow": [
+          "luna",
+          "bruno"
+        ],
+        "zoom": 1.0
+      },
+      "act": {
+        "luna": {
+          "face": -1,
+          "expr": "happy",
+          "move": "walk",
+          "to": 560,
+          "during": [
+            0.1,
+            1.0
+          ]
+        },
+        "bruno": {
+          "move": "walk",
+          "to": 820,
+          "during": [
+            0.15,
+            1.0
+          ]
+        }
+      },
+      "props": {
+        "f0": {
+          "grow": 1.0,
+          "during": [
+            0.1,
+            0.6
+          ]
+        },
+        "f1": {
+          "grow": 1.0,
+          "during": [
+            0.2,
+            0.6699999999999999
+          ]
+        },
+        "f2": {
+          "grow": 1.0,
+          "during": [
+            0.30000000000000004,
+            0.74
+          ]
+        },
+        "f3": {
+          "grow": 1.0,
+          "during": [
+            0.4,
+            0.81
+          ]
+        },
+        "f4": {
+          "grow": 1.0,
+          "during": [
+            0.5,
+            0.88
+          ]
+        },
+        "f5": {
+          "grow": 1.0,
+          "during": [
+            0.6,
+            0.95
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "All along Luna's path, beautiful flowers had grown!",
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "act": {
+        "luna": {
+          "expr": "excited",
+          "pose": "cheer",
+          "look": "down"
+        }
+      }
+    },
+    {
+      "speaker": "bruno",
+      "text": "Your falling seeds did this. Your weakness made the whole path beautiful.",
+      "tempo": 0.95,
+      "cam": {
+        "follow": [
+          "bruno"
+        ],
+        "zoom": 1.3
+      },
+      "act": {
+        "luna": {
+          "pose": "idle",
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "So even my mistakes can bring something good?",
+      "cam": {
+        "follow": [
+          "luna"
+        ],
+        "zoom": 1.3
+      },
+      "act": {
+        "luna": {
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "bruno",
+      "text": "Yes. We all have cracks. But love can grow something beautiful from every one of them.",
+      "tempo": 0.95,
+      "cam": {
+        "follow": [
+          "luna",
+          "bruno"
+        ],
+        "zoom": 1.15
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Don't hide your cracks. Something beautiful may be growing from them.",
+      "cam": {
+        "follow": [
+          "luna",
+          "bruno"
+        ],
+        "zoom": 1.0
+      }
+    }
+  ],
+  "outro": {
+    "headline": "Your cracks can grow flowers.",
+    "sub": "Wisdom stories for the whole family"
+  },
+  "camera": {
+    "zoom": 1.2
+  }
+}

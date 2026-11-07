@@ -62,8 +62,9 @@ class TamilTTS:
             tts_speakers_file=f"{TA_DIR}/fastpitch/speakers.pth", vocoder_checkpoint=f"{TA_DIR}/hifigan/best_model.pth",
             vocoder_config=f"{TA_DIR}/hifigan/config.json", use_cuda=False)
 
-    def create(self, text, who):
+    def create(self, text, who, tempo_scale=1.0):
         base, semis, tempo = TA_VOICES.get(who, TA_VOICES["narrator"])
+        tempo *= tempo_scale
         wav = np.array(self.syn.tts(text, speaker_name=base), dtype=np.float32)
         with tempfile.TemporaryDirectory() as d:
             sf.write(f"{d}/in.wav", wav, self.syn.output_sample_rate)
@@ -190,8 +191,9 @@ def main(story_path, out_dir, ui_lang=None):
         story = localize(story, ui_lang)
     os.makedirs(out_dir, exist_ok=True)
     kokoro = Kokoro(MODEL, VOICES)
-    tamil = TamilTTS() if ui_lang == "ta" else None
-    lang = "ta" if ui_lang == "ta" else story.get("lang", "en-us")
+    is_ta = (ui_lang or story.get("lang")) == "ta"
+    tamil = TamilTTS() if is_ta else None
+    lang = "ta" if is_ta else story.get("lang", "en-us")
     voices = {"narrator": story["narrator"]}
     voices.update({cid: c["voice"] for cid, c in story["characters"].items()})
 
@@ -202,14 +204,14 @@ def main(story_path, out_dir, ui_lang=None):
         b = dict(raw)
         v = voices[b["speaker"]]
         if tamil:
-            audio, sr = tamil.create(b["text"], b["speaker"])
+            audio, sr = tamil.create(b["text"], b["speaker"], b.get("tempo", 1.0))
         else:
-            audio, sr = kokoro.create(b["text"], voice=v["id"], speed=v.get("speed", 1.0), lang=lang)
+            audio, sr = kokoro.create(b["text"], voice=v["id"], speed=v.get("speed", 1.0) * b.get("tempo", 1.0), lang=lang)
         audio = audio.astype(np.float32)
         dur = len(audio) / sr
         b["start"] = round(t, 3)
         b["speechEnd"] = round(t + dur, 3)
-        b["end"] = round(t + dur + b.get("hold", 0) + b.get("pause", GAP), 3)
+        b["end"] = round(t + dur + b.get("hold", 0) + b.get("pause", story.get("pause", GAP)), 3)
         b["env"] = envelope(audio, sr)
         words = word_timings(kokoro, b["text"], audio, sr, lang)
         for w in words:

@@ -1,0 +1,297 @@
+{
+  "id": "k314-thirukkural-do-good",
+  "title": "திருக்குறள் கதை",
+  "lang": "ta",
+  "pause": 0.5,
+  "scene": "meadow",
+  "music": {
+    "key": "D",
+    "bpm": 80,
+    "seed": 22,
+    "mood": "calm"
+  },
+  "characters": {
+    "fen": {
+      "kind": "fox",
+      "name": "ஃபென்",
+      "color": "#f08a24",
+      "pill": "#e0761a",
+      "voice": {
+        "id": "am_fenrir",
+        "speed": 1.05
+      },
+      "start": {
+        "x": 470,
+        "face": 1,
+        "scale": 0.85
+      }
+    },
+    "pip": {
+      "kind": "turtle",
+      "name": "பிப்",
+      "color": "#4caf50",
+      "pill": "#3a9a3e",
+      "voice": {
+        "id": "am_puck",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 880,
+        "face": -1,
+        "scale": 0.85
+      }
+    }
+  },
+  "props": {
+    "basket": {
+      "kind": "basket",
+      "fruit": "apple",
+      "x": 705,
+      "scale": 0.8,
+      "full": 1
+    },
+    "apple": {
+      "kind": "apple",
+      "x": 705,
+      "show": false
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "திருக்குறள். குறள் எண், முன்னூற்றுப் பதினான்கு.",
+      "en": "Thirukkural, couplet 314.",
+      "hold": 0.3,
+      "card": [
+        "திருக்குறள்",
+        "குறள் 314"
+      ]
+    },
+    {
+      "speaker": "narrator",
+      "text": "இன்னாசெய் தாரை ஒறுத்தல், அவர்நாண நன்னயஞ் செய்து விடல்.",
+      "tempo": 0.8,
+      "hold": 0.8,
+      "card": [
+        "இன்னாசெய் தாரை ஒறுத்தல் அவர்நாண",
+        "நன்னயஞ் செய்து விடல்."
+      ],
+      "cardSub": "Punish those who harm you by doing them good, so they feel ashamed."
+    },
+    {
+      "speaker": "narrator",
+      "text": "இதன் பொருள் என்ன? ஒரு கதை மூலம் பார்ப்போம்.",
+      "en": "What does it mean? Let's see through a story.",
+      "cam": {
+        "follow": [
+          "fen",
+          "pip"
+        ],
+        "zoom": 1.0
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "ஃபென் நரி, எப்போதும் பிப்பைக் கேலி செய்வான்.",
+      "en": "Fen the fox always teased Pip.",
+      "cam": {
+        "follow": [
+          "fen",
+          "pip"
+        ],
+        "zoom": 1.1
+      },
+      "act": {
+        "fen": {
+          "expr": "excited",
+          "pose": "bounce"
+        },
+        "pip": {
+          "expr": "sad"
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "ஏய், மெதுவான ஆமையே! உன் ஆப்பிளை நான் எடுத்துக்கொள்கிறேன்!",
+      "en": "Hey, slowpoke turtle! I'm taking your apple!",
+      "act": {
+        "fen": {
+          "pose": "idle",
+          "face": -1,
+          "move": "walk",
+          "to": -260,
+          "during": [
+            0.45,
+            1.0
+          ]
+        }
+      },
+      "props": {
+        "apple": {
+          "show": true,
+          "to": -260,
+          "during": [
+            0.45,
+            1.0
+          ]
+        },
+        "basket": {
+          "full": 0.8,
+          "during": [
+            0.4,
+            0.5
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "பிப்புக்கு வருத்தமாக இருந்தது. ஆனால் அவன் கோபப்படவில்லை.",
+      "en": "Pip felt sad. But he did not get angry.",
+      "cam": {
+        "follow": [
+          "pip"
+        ],
+        "zoom": 1.35
+      },
+      "act": {
+        "pip": {
+          "expr": "worried",
+          "look": "down"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "ஒரு நாள், பெரிய புயல் வந்தது. ஃபென் குளிரிலும் பசியிலும் நடுங்கினான்.",
+      "en": "One day a big storm came. Fen shivered, cold and hungry.",
+      "sky": "storm",
+      "skyFade": 2.0,
+      "flash": [
+        0.4
+      ],
+      "cam": {
+        "follow": [
+          "fen",
+          "pip"
+        ],
+        "zoom": 1.05
+      },
+      "act": {
+        "fen": {
+          "face": 1,
+          "expr": "sad",
+          "pose": "shiver",
+          "move": "walk",
+          "to": 430,
+          "during": [
+            0.2,
+            1.0
+          ]
+        },
+        "pip": {
+          "look": "ahead",
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "ஃபென்! மரத்தடிக்கு வா. இந்தா, என் ஆப்பிள்களைச் சாப்பிடு.",
+      "en": "Fen! Come under the tree. Here, eat my apples.",
+      "act": {
+        "pip": {
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "ஃபென் வெட்கத்தால் தலை குனிந்தான்.",
+      "en": "Fen bowed his head in shame.",
+      "cam": {
+        "follow": [
+          "fen"
+        ],
+        "zoom": 1.35
+      },
+      "act": {
+        "fen": {
+          "pose": "idle",
+          "look": "down",
+          "move": "walk",
+          "to": 540,
+          "during": [
+            0.0,
+            0.6
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "நான் உன்னிடம் கெட்டவனாக நடந்துகொண்டேன். ஆனாலும் நீ எனக்கு நல்லது செய்தாய். என்னை மன்னித்துவிடு, பிப்.",
+      "en": "I was mean to you, yet you were good to me. Please forgive me, Pip.",
+      "cam": {
+        "follow": [
+          "fen",
+          "pip"
+        ],
+        "zoom": 1.15
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "பரவாயில்லை, ஃபென். இனி நாம் நண்பர்கள்!",
+      "en": "It's okay, Fen. From now on, we are friends!",
+      "sky": "day",
+      "skyFade": 2.5,
+      "rainbow": 1,
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "act": {
+        "pip": {
+          "expr": "excited",
+          "pose": "cheer"
+        },
+        "fen": {
+          "expr": "excited",
+          "pose": "cheer",
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "தீமை செய்தவருக்கும் நன்மை செய்வதே, அவர்களைத் திருத்தும் சிறந்த வழி. இதுவே வள்ளுவர் சொன்ன பாடம்.",
+      "en": "Doing good to those who harm us is the best way to change them. This is Valluvar's lesson.",
+      "act": {
+        "pip": {
+          "pose": "idle",
+          "expr": "happy"
+        },
+        "fen": {
+          "pose": "idle",
+          "expr": "happy"
+        }
+      }
+    }
+  ],
+  "outro": {
+    "headline": "தீமைக்கும் நன்மை செய்!",
+    "sub": "ஒவ்வொரு வாரமும் ஒரு திருக்குறள் கதை",
+    "follow": "Follow செய்யுங்கள்!"
+  },
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "camera": {
+    "zoom": 1.2
+  }
+}

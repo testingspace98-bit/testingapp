@@ -423,9 +423,9 @@ const PROPS = {
   basket: {
     svg(id, def) {
       let berries = "";
-      const apple = def.fruit === "apple";
+      const apple = def.fruit === "apple", seed = def.fruit === "seed";
       const pos = [[-40, -62], [-14, -66], [12, -66], [38, -62], [-28, -80], [0, -84], [26, -80], [-12, -98], [14, -98]];
-      pos.forEach(([x, y], i) => { berries += `<circle id="${id}-b${i}" cx="${x}" cy="${y}" r="${apple ? 17 : 15}" fill="${apple ? "#e53935" : i % 3 ? "#d81b60" : "#7b1fa2"}" stroke="${INK}" stroke-width="3"/>`; });
+      pos.forEach(([x, y], i) => { berries += `<circle id="${id}-b${i}" cx="${x}" cy="${y}" r="${apple ? 17 : seed ? 11 : 15}" fill="${apple ? "#e53935" : seed ? (i % 2 ? "#8d6e63" : "#a1887f") : i % 3 ? "#d81b60" : "#7b1fa2"}" stroke="${INK}" stroke-width="3"/>`; });
       return `<path d="M -62 -60 Q 0 -150 62 -60" fill="none" stroke="#8d5a3b" stroke-width="9"/>${berries}
         <path d="M -66 -60 L 66 -60 L 52 0 L -52 0 Z" fill="#c68b52" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>
         <path d="M -60 -40 L 60 -40 M -56 -20 L 56 -20 M -30 -60 L -26 0 M 0 -60 L 0 0 M 30 -60 L 26 0" stroke="#8d5a3b" stroke-width="4"/>`;
@@ -687,7 +687,15 @@ function captions(t) {
   let beat = null;
   for (const b of TL.beats) if (t >= b.start && t <= b.speechEnd + 0.3) beat = b;
   const wrap = $("capwrap");
-  if (!beat || t >= TL.outroStart) { wrap.style.opacity = 0; CAP.key = null; return; }
+  let cb = null;
+  for (const b of TL.beats) if (b.card && t >= b.start - 0.2 && t <= b.end) cb = b;
+  const card = $("kcard");
+  card.style.opacity = cb ? clamp((t - cb.start + 0.2) / 0.4, 0, 1).toFixed(3) : 0;
+  if (cb && card.dataset.k !== String(cb.start)) { card.innerHTML = cb.card.map((l) => `<div style="font-size:${Math.min(56, Math.floor(1250 / l.length))}px">${l}</div>`).join("") + (cb.cardSub ? `<p>${cb.cardSub}</p>` : ""); card.dataset.k = String(cb.start); }
+  const sub = $("sub");
+  sub.style.opacity = beat && beat.en && !cb && t < TL.outroStart ? 1 : 0;
+  if (beat && beat.en && sub.dataset.k !== String(beat.start)) { sub.textContent = beat.en; sub.dataset.k = String(beat.start); }
+  if (!beat || t >= TL.outroStart || cb) { wrap.style.opacity = 0; CAP.key = null; return; }
   wrap.style.opacity = 1;
   let ci = 0;
   beat.chunks.forEach((ch, i) => { if (t >= ch[0].s - 0.08) ci = i; });
@@ -714,7 +722,7 @@ function captions(t) {
 function titleCard(t) {
   const el = $("title");
   const inU = backOut(t / 0.45), out = clamp((t - 2.7) / 0.35, 0, 1);
-  el.style.opacity = t < 0 ? 0 : 1 - out;
+  el.style.opacity = t < 0 || (TL.beats[0] && TL.beats[0].card) ? 0 : 1 - out;
   el.style.transform = `translateY(${(-out * 40).toFixed(1)}px) rotate(-3deg) scale(${(0.5 + 0.5 * inU).toFixed(3)})`;
 }
 
@@ -772,7 +780,7 @@ window.setup = function (tl) {
   TL = tl;
   SC = SCENES[tl.story.scene];
   const chars = tl.story.characters;
-  let charSVG = "", shadows = "", propSVG = "";
+  let charSVG = "", shadows = "", propSVG = "", backSVG = "";
   for (const cid of Object.keys(chars)) {
     const def = chars[cid];
     CH[cid] = { def, flies: !!KINDS[def.kind].flies, track: null };
@@ -791,7 +799,8 @@ window.setup = function (tl) {
       keys.push(k);
     }
     PR[pid] = { def, keys };
-    propSVG += `<g id="${pid}">${PROPS[def.kind].svg(pid, def)}</g>`;
+    const g = `<g id="${pid}">${PROPS[def.kind].svg(pid, def)}</g>`;
+    if (def.behind) backSVG += g; else propSVG += g;
   }
   const r = rand(77);
   let stars = "";
@@ -821,7 +830,7 @@ window.setup = function (tl) {
     <g id="moon" transform="translate(860,720)"><circle r="120" fill="#fff6d5" opacity=".12"/><circle r="72" fill="#fff6d5" stroke="#e8dcb0" stroke-width="6"/><circle cx="-22" cy="-14" r="13" fill="#eadfb8"/><circle cx="20" cy="18" r="9" fill="#eadfb8"/></g>
     <g id="rainbow" opacity="0">${rb}</g>
     ${cloud("c1", 200, 900, 1)}${cloud("c2", 760, 1010, 0.8)}${cloud("c3", 520, 760, 0.6)}
-    <g id="world">${SC.svg(SC.ground)}${shadows}${charSVG}${propSVG}${SC.front ? SC.front() : ""}
+    <g id="world">${SC.svg(SC.ground)}${backSVG}${shadows}${charSVG}${propSVG}${SC.front ? SC.front() : ""}
       <rect id="tint" x="-1500" y="-1500" width="4000" height="5000" style="mix-blend-mode:multiply"/>
       <g id="glow" style="mix-blend-mode:screen"></g>
     </g>

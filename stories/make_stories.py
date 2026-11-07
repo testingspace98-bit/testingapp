@@ -526,6 +526,80 @@ STORIES.append({
     "outro": {"headline": "Keep your promises!", "sub": "A new story every day"},
 })
 
+# ---------------------------------------------------------------- samples for the all-ages formats
+
+# P01 - wisdom parable (after the folk tale "The Cracked Pot"): told slowly for every age
+STORIES.append({
+    "id": "p01-the-leaky-basket", "title": "The Leaky Basket", "lesson": "Your cracks can grow flowers.",
+    "scene": "meadow", "sky": "dawn", "pause": 0.6, "narrator": {"id": "af_heart", "speed": 0.88},
+    "music": {"key": "F", "bpm": 76, "seed": 21, "mood": "calm"},
+    "characters": {"luna": char("luna", 160), "bruno": dict(char("bruno", 1250, -1), name="Grandpa Bruno")},
+    "props": {
+        "basket": {"kind": "basket", "fruit": "seed", "scale": 0.55, "full": 1, "attach": {"to": "luna", "dx": 75, "dy": -60}},
+        **{f"f{i}": {"kind": "sprout", "x": x, "scale": 0.36, "grow": 0, "behind": True} for i, x in enumerate([230, 370, 500, 640, 770, 900])},
+    },
+    "beats": [
+        N("Every morning, Luna carried seeds across the meadow to Grandpa Bruno's garden.", cam=cam(["luna"], 1.2),
+          act={"luna": {"expr": "happy", "move": "walk", "to": 820, "during": [0.1, 1.0]}}, props={"basket": {"full": 0.4, "during": [0.1, 1.0]}}),
+        N("But her basket had a little hole. And along the way, seeds always fell out.", cam=cam(["luna"], 1.35),
+          act={"luna": {"expr": "worried", "look": "down"}}),
+        S("luna", "Oh no. I lost half the seeds again. I'm so clumsy.", act={"luna": {"expr": "sad"}}),
+        S("luna", "Grandpa Bruno, I'm sorry. I'm just not good enough.", cam=cam(["luna", "bruno"], 1.1),
+          act={"bruno": {"expr": "happy", "move": "walk", "to": 1010, "during": [0.0, 0.7]}, "luna": {"look": "ahead"}}),
+        S("bruno", "Shh, little one. Wait, and I'll show you something.", tempo=0.95),
+        N("Weeks went by. Then one bright morning, they walked the path together.", sky="day", skyFade=3.0, cam=cam(["luna", "bruno"], 1.0),
+          act={"luna": {"face": -1, "expr": "happy", "move": "walk", "to": 560, "during": [0.1, 1.0]},
+               "bruno": {"move": "walk", "to": 820, "during": [0.15, 1.0]}},
+          props={f"f{i}": {"grow": 1.0, "during": [0.1 + i * 0.1, 0.6 + i * 0.07]} for i in range(6)}),
+        N("All along Luna's path, beautiful flowers had grown!", sfx=SPARKLE, act={"luna": {"expr": "excited", "pose": "cheer", "look": "down"}}),
+        S("bruno", "Your falling seeds did this. Your weakness made the whole path beautiful.", tempo=0.95, cam=cam(["bruno"], 1.3),
+          act={"luna": {"pose": "idle", "look": "ahead"}}),
+        S("luna", "So even my mistakes can bring something good?", cam=cam(["luna"], 1.3), act={"luna": {"expr": "happy"}}),
+        S("bruno", "Yes. We all have cracks. But love can grow something beautiful from every one of them.", tempo=0.95, cam=cam(["luna", "bruno"], 1.15)),
+        N("Don't hide your cracks. Something beautiful may be growing from them.", cam=cam(["luna", "bruno"], 1.0)),
+    ],
+    "outro": {"headline": "Your cracks can grow flowers.", "sub": "Wisdom stories for the whole family"},
+})
+
+# K314 - Thirukkural story (Tamil, English subtitles). Kural 314: repay harm with good.
+STORIES.append({
+    "id": "k314-thirukkural-do-good", "title": "திருக்குறள் கதை", "lang": "ta", "pause": 0.5,
+    "scene": "meadow", "music": {"key": "D", "bpm": 80, "seed": 22, "mood": "calm"},
+    "characters": {"fen": dict(char("fen", 470), name="ஃபென்"), "pip": dict(char("pip", 880, -1), name="பிப்")},
+    "props": {"basket": {"kind": "basket", "fruit": "apple", "x": 705, "scale": 0.8, "full": 1},
+              "apple": {"kind": "apple", "x": 705, "show": False}},
+    "beats": [
+        N("திருக்குறள். குறள் எண், முன்னூற்றுப் பதினான்கு.", en="Thirukkural, couplet 314.", hold=0.3,
+          card=["திருக்குறள்", "குறள் 314"]),
+        N("இன்னாசெய் தாரை ஒறுத்தல், அவர்நாண நன்னயஞ் செய்து விடல்.", tempo=0.8, hold=0.8,
+          card=["இன்னாசெய் தாரை ஒறுத்தல் அவர்நாண", "நன்னயஞ் செய்து விடல்."],
+          cardSub="Punish those who harm you by doing them good, so they feel ashamed."),
+        N("இதன் பொருள் என்ன? ஒரு கதை மூலம் பார்ப்போம்.", en="What does it mean? Let's see through a story.", cam=cam(["fen", "pip"], 1.0)),
+        N("ஃபென் நரி, எப்போதும் பிப்பைக் கேலி செய்வான்.", en="Fen the fox always teased Pip.", cam=cam(["fen", "pip"], 1.1),
+          act={"fen": {"expr": "excited", "pose": "bounce"}, "pip": {"expr": "sad"}}),
+        S("fen", "ஏய், மெதுவான ஆமையே! உன் ஆப்பிளை நான் எடுத்துக்கொள்கிறேன்!", en="Hey, slowpoke turtle! I'm taking your apple!",
+          act={"fen": {"pose": "idle", "face": -1, "move": "walk", "to": -260, "during": [0.45, 1.0]}},
+          props={"apple": {"show": True, "to": -260, "during": [0.45, 1.0]}, "basket": {"full": 0.8, "during": [0.4, 0.5]}}),
+        N("பிப்புக்கு வருத்தமாக இருந்தது. ஆனால் அவன் கோபப்படவில்லை.", en="Pip felt sad. But he did not get angry.", cam=cam(["pip"], 1.35),
+          act={"pip": {"expr": "worried", "look": "down"}}),
+        N("ஒரு நாள், பெரிய புயல் வந்தது. ஃபென் குளிரிலும் பசியிலும் நடுங்கினான்.", en="One day a big storm came. Fen shivered, cold and hungry.",
+          sky="storm", skyFade=2.0, flash=[0.4], cam=cam(["fen", "pip"], 1.05),
+          act={"fen": {"face": 1, "expr": "sad", "pose": "shiver", "move": "walk", "to": 430, "during": [0.2, 1.0]}, "pip": {"look": "ahead", "expr": "happy"}}),
+        S("pip", "ஃபென்! மரத்தடிக்கு வா. இந்தா, என் ஆப்பிள்களைச் சாப்பிடு.", en="Fen! Come under the tree. Here, eat my apples.",
+          act={"pip": {"expr": "happy"}}),
+        N("ஃபென் வெட்கத்தால் தலை குனிந்தான்.", en="Fen bowed his head in shame.", cam=cam(["fen"], 1.35),
+          act={"fen": {"pose": "idle", "look": "down", "move": "walk", "to": 540, "during": [0.0, 0.6]}}),
+        S("fen", "நான் உன்னிடம் கெட்டவனாக நடந்துகொண்டேன். ஆனாலும் நீ எனக்கு நல்லது செய்தாய். என்னை மன்னித்துவிடு, பிப்.",
+          en="I was mean to you, yet you were good to me. Please forgive me, Pip.", cam=cam(["fen", "pip"], 1.15)),
+        S("pip", "பரவாயில்லை, ஃபென். இனி நாம் நண்பர்கள்!", en="It's okay, Fen. From now on, we are friends!", sky="day", skyFade=2.5, rainbow=1,
+          sfx=SPARKLE, act={"pip": {"expr": "excited", "pose": "cheer"}, "fen": {"expr": "excited", "pose": "cheer", "look": "ahead"}}),
+        N("தீமை செய்தவருக்கும் நன்மை செய்வதே, அவர்களைத் திருத்தும் சிறந்த வழி. இதுவே வள்ளுவர் சொன்ன பாடம்.",
+          en="Doing good to those who harm us is the best way to change them. This is Valluvar's lesson.",
+          act={"pip": {"pose": "idle", "expr": "happy"}, "fen": {"pose": "idle", "expr": "happy"}}),
+    ],
+    "outro": {"headline": "தீமைக்கும் நன்மை செய்!", "sub": "ஒவ்வொரு வாரமும் ஒரு திருக்குறள் கதை", "follow": "Follow செய்யுங்கள்!"},
+})
+
 for s in STORIES:
     s.setdefault("narrator", NARRATOR)
     s.setdefault("camera", {"zoom": 1.2})
