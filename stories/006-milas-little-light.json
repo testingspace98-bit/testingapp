@@ -1,0 +1,242 @@
+{
+  "id": "006-milas-little-light",
+  "title": "Mila's Little Light",
+  "lesson": "No light is too small.",
+  "scene": "forest",
+  "sky": "night",
+  "music": {
+    "key": "A",
+    "bpm": 80,
+    "seed": 4,
+    "mood": "calm"
+  },
+  "characters": {
+    "luna": {
+      "kind": "bunny",
+      "name": "Luna",
+      "color": "#f4eaff",
+      "pill": "#9a7fd1",
+      "voice": {
+        "id": "af_bella",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 190,
+        "face": 1,
+        "scale": 0.85
+      }
+    },
+    "mila": {
+      "kind": "lamb",
+      "name": "Mila",
+      "color": "#fffaf0",
+      "pill": "#a58fb0",
+      "voice": {
+        "id": "bf_emma",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 820,
+        "face": -1,
+        "scale": 0.95
+      }
+    }
+  },
+  "props": {
+    "lantern": {
+      "kind": "lantern",
+      "scale": 0.9,
+      "glow": 0.7,
+      "attach": {
+        "to": "mila",
+        "dx": 140,
+        "dy": -30
+      }
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "Mila was the smallest lamb in the whole forest.",
+      "cam": {
+        "follow": [
+          "mila"
+        ],
+        "zoom": 1.45
+      },
+      "act": {
+        "mila": {
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "mila",
+      "text": "I'm so small. What can a little lamb like me ever do?",
+      "act": {
+        "mila": {
+          "expr": "sad",
+          "look": "down"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "That night, she heard someone crying in the dark.",
+      "act": {
+        "mila": {
+          "expr": "scared",
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "I'm lost! It's too dark. I can't find my way home!",
+      "cam": {
+        "follow": [
+          "luna"
+        ],
+        "zoom": 1.4
+      },
+      "act": {
+        "luna": {
+          "expr": "sad",
+          "pose": "shiver"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Mila only had a tiny lantern. But she held it up high.",
+      "cam": {
+        "follow": [
+          "mila",
+          "luna"
+        ],
+        "zoom": 1.1
+      },
+      "act": {
+        "mila": {
+          "expr": "determined",
+          "move": "walk",
+          "to": 560,
+          "during": [
+            0.3,
+            1.0
+          ]
+        }
+      },
+      "props": {
+        "lantern": {
+          "glow": 1.6,
+          "during": [
+            0.2,
+            0.9
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "mila",
+      "text": "Follow my light, Luna! I'll show you the way.",
+      "act": {
+        "mila": {
+          "expr": "happy"
+        },
+        "luna": {
+          "expr": "worried",
+          "pose": "idle"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Step by step, the little light led them all the way home.",
+      "cam": {
+        "follow": [
+          "mila",
+          "luna"
+        ],
+        "zoom": 1.1
+      },
+      "act": {
+        "mila": {
+          "face": 1,
+          "move": "walk",
+          "to": 880,
+          "during": [
+            0.05,
+            1.0
+          ]
+        },
+        "luna": {
+          "expr": "happy",
+          "move": "walk",
+          "to": 650,
+          "during": [
+            0.15,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "Thank you, Mila! Your little light saved me!",
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "cam": {
+        "follow": [
+          "mila",
+          "luna"
+        ],
+        "zoom": 1.2
+      },
+      "act": {
+        "luna": {
+          "expr": "excited",
+          "pose": "cheer"
+        }
+      }
+    },
+    {
+      "speaker": "mila",
+      "text": "Maybe little lights matter too!",
+      "act": {
+        "mila": {
+          "expr": "excited",
+          "pose": "bounce"
+        },
+        "luna": {
+          "pose": "idle"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "No light is too small. Let yours shine bright!",
+      "act": {
+        "mila": {
+          "pose": "idle",
+          "expr": "happy"
+        }
+      }
+    }
+  ],
+  "outro": {
+    "headline": "Let your light shine!",
+    "sub": "A new story every day"
+  },
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "camera": {
+    "zoom": 1.2
+  }
+}

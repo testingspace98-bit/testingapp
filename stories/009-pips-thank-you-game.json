@@ -1,0 +1,216 @@
+{
+  "id": "009-pips-thank-you-game",
+  "title": "Pip's Thank-You Game",
+  "lesson": "A thankful heart finds joy every day.",
+  "scene": "meadow",
+  "sky": "dawn",
+  "music": {
+    "key": "C",
+    "bpm": 100,
+    "seed": 7
+  },
+  "characters": {
+    "pip": {
+      "kind": "turtle",
+      "name": "Pip",
+      "color": "#4caf50",
+      "pill": "#3a9a3e",
+      "voice": {
+        "id": "am_puck",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 300,
+        "face": 1,
+        "scale": 0.85,
+        "expr": "angry"
+      }
+    },
+    "mila": {
+      "kind": "lamb",
+      "name": "Mila",
+      "color": "#fffaf0",
+      "pill": "#a58fb0",
+      "voice": {
+        "id": "bf_emma",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 1250,
+        "face": -1,
+        "scale": 0.95
+      }
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "Pip woke up feeling very grumpy.",
+      "cam": {
+        "follow": [
+          "pip"
+        ],
+        "zoom": 1.4
+      },
+      "act": {
+        "pip": {
+          "expr": "angry"
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "My shell is heavy. I'm too slow. Nothing good ever happens to me!",
+      "act": {
+        "pip": {
+          "look": "down"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Then his friend Mila came trotting over.",
+      "cam": {
+        "follow": [
+          "pip",
+          "mila"
+        ],
+        "zoom": 1.25
+      },
+      "act": {
+        "mila": {
+          "move": "walk",
+          "to": 700,
+          "during": [
+            0.0,
+            0.9
+          ],
+          "expr": "happy"
+        },
+        "pip": {
+          "look": "ahead",
+          "expr": "sad"
+        }
+      }
+    },
+    {
+      "speaker": "mila",
+      "text": "Let's play a game, Pip! Let's count all the good things!",
+      "act": {
+        "mila": {
+          "expr": "excited",
+          "pose": "bounce"
+        }
+      }
+    },
+    {
+      "speaker": "mila",
+      "text": "I'll go first. The sun is shining!",
+      "sky": "day",
+      "skyFade": 2.5,
+      "act": {
+        "mila": {
+          "expr": "happy",
+          "pose": "idle",
+          "look": "up"
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "Well... the grass is nice and soft.",
+      "act": {
+        "pip": {
+          "expr": "worried"
+        },
+        "mila": {
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "mila",
+      "text": "And we have yummy flowers to eat!",
+      "act": {
+        "mila": {
+          "expr": "excited"
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "And... I have a friend like you!",
+      "act": {
+        "pip": {
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "The more Pip said thank you, the happier he felt.",
+      "act": {
+        "pip": {
+          "pose": "bounce",
+          "expr": "excited"
+        },
+        "mila": {
+          "pose": "bounce"
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "My shell keeps me safe, too! Thank you, shell!",
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "cam": {
+        "follow": [
+          "pip"
+        ],
+        "zoom": 1.35
+      },
+      "act": {
+        "pip": {
+          "pose": "cheer"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "A thankful heart can find joy in every single day.",
+      "cam": {
+        "follow": [
+          "pip",
+          "mila"
+        ],
+        "zoom": 1.2
+      },
+      "act": {
+        "pip": {
+          "pose": "idle",
+          "expr": "happy"
+        },
+        "mila": {
+          "pose": "idle",
+          "expr": "happy"
+        }
+      }
+    }
+  ],
+  "outro": {
+    "headline": "Count your blessings today!",
+    "sub": "A new story every day"
+  },
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "camera": {
+    "zoom": 1.2
+  }
+}

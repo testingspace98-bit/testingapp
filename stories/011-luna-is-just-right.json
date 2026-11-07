@@ -1,0 +1,298 @@
+{
+  "id": "011-luna-is-just-right",
+  "title": "Luna Is Just Right",
+  "lesson": "You don't need to be anyone else.",
+  "scene": "meadow",
+  "music": {
+    "key": "G",
+    "bpm": 94,
+    "seed": 9
+  },
+  "characters": {
+    "bruno": {
+      "kind": "bear",
+      "name": "Bruno",
+      "color": "#9a6440",
+      "pill": "#8a5532",
+      "voice": {
+        "id": "am_michael",
+        "speed": 0.92
+      },
+      "start": {
+        "x": 120,
+        "face": 1,
+        "scale": 0.82
+      }
+    },
+    "luna": {
+      "kind": "bunny",
+      "name": "Luna",
+      "color": "#f4eaff",
+      "pill": "#9a7fd1",
+      "voice": {
+        "id": "af_bella",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 340,
+        "face": 1,
+        "scale": 0.85
+      }
+    },
+    "bo": {
+      "kind": "bird",
+      "name": "Bo",
+      "color": "#3d9df3",
+      "voice": {
+        "id": "af_kore",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 520,
+        "face": -1,
+        "scale": 0.9,
+        "y": 1060
+      }
+    },
+    "pip": {
+      "kind": "turtle",
+      "name": "Pip",
+      "color": "#4caf50",
+      "pill": "#3a9a3e",
+      "voice": {
+        "id": "am_puck",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 820,
+        "face": -1,
+        "scale": 0.85,
+        "pose": "flipped",
+        "expr": "scared"
+      }
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "Luna watched her friends, and felt very small.",
+      "cam": {
+        "follow": [
+          "luna",
+          "bruno"
+        ],
+        "zoom": 1.25
+      },
+      "act": {
+        "luna": {
+          "expr": "sad"
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "Bo can fly. Bruno is so strong. And I'm... just me.",
+      "act": {
+        "luna": {
+          "look": "up"
+        },
+        "bo": {
+          "move": "fly",
+          "to": [
+            600,
+            980
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Suddenly, Luna heard a tiny cry, far, far away.",
+      "cam": {
+        "follow": [
+          "luna"
+        ],
+        "zoom": 1.4
+      },
+      "act": {
+        "luna": {
+          "expr": "worried",
+          "pose": "listen",
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "bruno",
+      "text": "Hmm? I don't hear anything.",
+      "cam": {
+        "follow": [
+          "bruno",
+          "luna"
+        ],
+        "zoom": 1.3
+      },
+      "act": {
+        "bruno": {
+          "expr": "worried"
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "I do! Someone needs help! This way!",
+      "cam": {
+        "follow": [
+          "luna",
+          "bruno"
+        ],
+        "zoom": 1.15
+      },
+      "act": {
+        "luna": {
+          "expr": "determined",
+          "pose": "idle",
+          "move": "walk",
+          "to": 470,
+          "during": [
+            0.3,
+            1.0
+          ]
+        },
+        "bruno": {
+          "move": "walk",
+          "to": 300,
+          "during": [
+            0.4,
+            1.0
+          ]
+        },
+        "bo": {
+          "move": "fly",
+          "to": [
+            700,
+            900
+          ],
+          "during": [
+            0.3,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Luna's big ears led them straight to Pip. He was stuck on his back!",
+      "cam": {
+        "follow": [
+          "pip",
+          "luna"
+        ],
+        "zoom": 1.2
+      },
+      "act": {
+        "luna": {
+          "expr": "worried"
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "Help! I can't turn over!",
+      "cam": {
+        "follow": [
+          "pip"
+        ],
+        "zoom": 1.35
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Bruno gently flipped him back over.",
+      "cam": {
+        "follow": [
+          "bruno",
+          "pip"
+        ],
+        "zoom": 1.2
+      },
+      "act": {
+        "bruno": {
+          "move": "walk",
+          "to": 610,
+          "during": [
+            0.0,
+            0.5
+          ]
+        },
+        "pip": {
+          "pose": "idle",
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "Thank you! But how did you ever find me?",
+      "act": {
+        "pip": {
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "bruno",
+      "text": "Luna heard you! Her ears are amazing!",
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "cam": {
+        "follow": [
+          "luna",
+          "bruno"
+        ],
+        "zoom": 1.2
+      },
+      "act": {
+        "luna": {
+          "expr": "excited",
+          "pose": "cheer"
+        },
+        "bruno": {
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "You don't have to be like anyone else. You were made just right.",
+      "cam": {
+        "follow": [
+          "luna",
+          "pip"
+        ],
+        "zoom": 1.05
+      },
+      "act": {
+        "luna": {
+          "pose": "idle",
+          "expr": "happy"
+        }
+      }
+    }
+  ],
+  "outro": {
+    "headline": "You were made just right!",
+    "sub": "A new story every day"
+  },
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "camera": {
+    "zoom": 1.2
+  }
+}

@@ -1,0 +1,234 @@
+{
+  "id": "010-the-lost-lamb",
+  "title": "The Lost Lamb",
+  "lesson": "No one is too lost to be found. You are loved.",
+  "scene": "forest",
+  "sky": "sunset",
+  "music": {
+    "key": "F",
+    "bpm": 84,
+    "seed": 8,
+    "mood": "calm"
+  },
+  "characters": {
+    "mila": {
+      "kind": "lamb",
+      "name": "Mila",
+      "color": "#fffaf0",
+      "pill": "#a58fb0",
+      "voice": {
+        "id": "bf_emma",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 250,
+        "face": 1,
+        "scale": 0.95
+      }
+    },
+    "bruno": {
+      "kind": "bear",
+      "name": "Bruno",
+      "color": "#9a6440",
+      "pill": "#8a5532",
+      "voice": {
+        "id": "am_michael",
+        "speed": 0.92
+      },
+      "start": {
+        "x": -260,
+        "face": 1,
+        "scale": 0.82
+      }
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "Mila followed a pretty butterfly, far away from her friends.",
+      "cam": {
+        "follow": [
+          "mila"
+        ],
+        "zoom": 1.35
+      },
+      "act": {
+        "mila": {
+          "expr": "happy",
+          "move": "walk",
+          "to": 720,
+          "during": [
+            0.05,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "When she looked up, the sun was going down.",
+      "sky": "night",
+      "skyFade": 3.0,
+      "act": {
+        "mila": {
+          "expr": "worried",
+          "look": "up"
+        }
+      }
+    },
+    {
+      "speaker": "mila",
+      "text": "Hello? Is anyone there? I think I'm lost...",
+      "act": {
+        "mila": {
+          "expr": "scared",
+          "pose": "shiver",
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Bruno counted his friends. Someone was missing!",
+      "cam": {
+        "follow": [
+          "bruno"
+        ],
+        "zoom": 1.35
+      },
+      "act": {
+        "bruno": {
+          "move": "walk",
+          "to": 170,
+          "during": [
+            0.0,
+            0.6
+          ],
+          "expr": "worried"
+        }
+      }
+    },
+    {
+      "speaker": "bruno",
+      "text": "Mila is missing! I'll find her, no matter what!",
+      "act": {
+        "bruno": {
+          "expr": "determined"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Bruno searched and searched, deep into the dark forest.",
+      "cam": {
+        "follow": [
+          "bruno"
+        ],
+        "zoom": 1.2
+      },
+      "act": {
+        "bruno": {
+          "move": "walk",
+          "to": 430,
+          "during": [
+            0.0,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "bruno",
+      "text": "Mila! Mila, where are you?",
+      "cam": {
+        "follow": [
+          "bruno",
+          "mila"
+        ],
+        "zoom": 1.15
+      },
+      "act": {
+        "bruno": {
+          "expr": "worried"
+        }
+      }
+    },
+    {
+      "speaker": "mila",
+      "text": "Bruno! I'm over here!",
+      "act": {
+        "mila": {
+          "face": -1,
+          "expr": "excited",
+          "pose": "bounce"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Bruno was so happy, he gave her the biggest hug.",
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "cam": {
+        "follow": [
+          "bruno",
+          "mila"
+        ],
+        "zoom": 1.25
+      },
+      "act": {
+        "bruno": {
+          "move": "walk",
+          "to": 560,
+          "during": [
+            0.0,
+            0.5
+          ],
+          "expr": "excited"
+        },
+        "mila": {
+          "pose": "cheer"
+        }
+      }
+    },
+    {
+      "speaker": "bruno",
+      "text": "You matter so much, Mila. I'll always come looking for you.",
+      "act": {
+        "bruno": {
+          "expr": "happy"
+        },
+        "mila": {
+          "pose": "idle",
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "No one is ever too lost to be found. You are always loved.",
+      "cam": {
+        "follow": [
+          "bruno",
+          "mila"
+        ],
+        "zoom": 1.1
+      }
+    }
+  ],
+  "outro": {
+    "headline": "You are loved!",
+    "sub": "A new story every day"
+  },
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "camera": {
+    "zoom": 1.2
+  }
+}

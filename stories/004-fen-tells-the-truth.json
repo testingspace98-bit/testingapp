@@ -1,0 +1,381 @@
+{
+  "id": "004-fen-tells-the-truth",
+  "title": "Fen Tells the Truth",
+  "lesson": "Honest words take courage. Forgiving takes love.",
+  "scene": "meadow",
+  "music": {
+    "key": "A",
+    "bpm": 98,
+    "seed": 2
+  },
+  "characters": {
+    "luna": {
+      "kind": "bunny",
+      "name": "Luna",
+      "color": "#f4eaff",
+      "pill": "#9a7fd1",
+      "voice": {
+        "id": "af_bella",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 650,
+        "face": 1,
+        "scale": 0.85
+      }
+    },
+    "fen": {
+      "kind": "fox",
+      "name": "Fen",
+      "color": "#f08a24",
+      "pill": "#e0761a",
+      "voice": {
+        "id": "am_fenrir",
+        "speed": 1.05
+      },
+      "start": {
+        "x": -150,
+        "face": 1,
+        "scale": 0.85
+      }
+    }
+  },
+  "props": {
+    "basket": {
+      "kind": "basket",
+      "fruit": "apple",
+      "x": 560,
+      "scale": 0.9,
+      "full": 1
+    },
+    "a1": {
+      "kind": "apple",
+      "x": 560,
+      "show": false
+    },
+    "a2": {
+      "kind": "apple",
+      "x": 560,
+      "show": false
+    },
+    "a3": {
+      "kind": "apple",
+      "x": 560,
+      "show": false
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "Luna left her basket of apples by the big oak tree.",
+      "cam": {
+        "follow": [
+          "luna"
+        ],
+        "zoom": 1.2
+      },
+      "act": {
+        "luna": {
+          "expr": "happy",
+          "move": "walk",
+          "to": 1350,
+          "during": [
+            0.35,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Then Fen the fox came racing by!",
+      "cam": {
+        "follow": [
+          "fen"
+        ],
+        "zoom": 1.25
+      },
+      "act": {
+        "fen": {
+          "expr": "excited",
+          "move": "walk",
+          "to": 470,
+          "during": [
+            0.0,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "Whoa! Whoops!",
+      "hold": 0.5,
+      "sfx": [
+        {
+          "name": "whoosh",
+          "at": 0.0
+        }
+      ],
+      "cam": {
+        "follow": [
+          "fen"
+        ],
+        "zoom": 1.15
+      },
+      "act": {
+        "fen": {
+          "expr": "scared",
+          "pose": "shiver"
+        }
+      },
+      "props": {
+        "basket": {
+          "full": 0,
+          "during": [
+            0.0,
+            0.25
+          ]
+        },
+        "a1": {
+          "show": true,
+          "to": 690,
+          "during": [
+            0.05,
+            0.8
+          ]
+        },
+        "a2": {
+          "show": true,
+          "to": 790,
+          "during": [
+            0.05,
+            0.9
+          ]
+        },
+        "a3": {
+          "show": true,
+          "to": 890,
+          "during": [
+            0.05,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "Oh no! Luna's apples!",
+      "cam": {
+        "follow": [
+          "fen"
+        ],
+        "zoom": 1.4
+      },
+      "act": {
+        "fen": {
+          "look": "down"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Nobody saw. Fen could just run away...",
+      "act": {
+        "fen": {
+          "expr": "worried",
+          "pose": "idle",
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "But deep down, Fen knew what was right.",
+      "act": {
+        "fen": {
+          "expr": "determined"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "When Luna came back, Fen walked right up to her.",
+      "cam": {
+        "follow": [
+          "fen",
+          "luna"
+        ],
+        "zoom": 1.05
+      },
+      "act": {
+        "luna": {
+          "move": "walk",
+          "to": 900,
+          "face": -1,
+          "during": [
+            0.0,
+            0.7
+          ]
+        },
+        "fen": {
+          "move": "walk",
+          "to": 620,
+          "during": [
+            0.3,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "Luna, I knocked over your apples. I'm really sorry.",
+      "cam": {
+        "follow": [
+          "fen",
+          "luna"
+        ],
+        "zoom": 1.2
+      },
+      "act": {
+        "fen": {
+          "expr": "sad"
+        },
+        "luna": {
+          "expr": "worried"
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "Thank you for telling the truth, Fen. I forgive you!",
+      "cam": {
+        "follow": [
+          "luna"
+        ],
+        "zoom": 1.3
+      },
+      "act": {
+        "luna": {
+          "expr": "happy"
+        },
+        "fen": {
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Then they picked up every apple, together.",
+      "cam": {
+        "follow": [
+          "fen",
+          "luna"
+        ],
+        "zoom": 1.15
+      },
+      "act": {
+        "fen": {
+          "move": "walk",
+          "to": 430
+        },
+        "luna": {
+          "move": "walk",
+          "to": 700
+        }
+      },
+      "props": {
+        "a1": {
+          "to": 560,
+          "during": [
+            0.1,
+            0.7
+          ]
+        },
+        "a2": {
+          "to": 560,
+          "during": [
+            0.1,
+            0.8
+          ]
+        },
+        "a3": {
+          "to": 560,
+          "during": [
+            0.1,
+            0.9
+          ]
+        },
+        "basket": {
+          "full": 1,
+          "during": [
+            0.6,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Honest words take courage. Forgiving takes a loving heart.",
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "cam": {
+        "follow": [
+          "fen",
+          "luna"
+        ],
+        "zoom": 1.1
+      },
+      "act": {
+        "fen": {
+          "pose": "cheer",
+          "expr": "excited"
+        },
+        "luna": {
+          "pose": "cheer",
+          "expr": "excited"
+        }
+      },
+      "props": {
+        "a1": {
+          "show": false,
+          "during": [
+            0,
+            0.1
+          ]
+        },
+        "a2": {
+          "show": false,
+          "during": [
+            0,
+            0.1
+          ]
+        },
+        "a3": {
+          "show": false,
+          "during": [
+            0,
+            0.1
+          ]
+        }
+      }
+    }
+  ],
+  "outro": {
+    "headline": "Be honest. Be kind.",
+    "sub": "A new story every day"
+  },
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "camera": {
+    "zoom": 1.2
+  }
+}

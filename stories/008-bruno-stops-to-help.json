@@ -1,0 +1,253 @@
+{
+  "id": "008-bruno-stops-to-help",
+  "title": "Bruno Stops to Help",
+  "lesson": "Don't judge by looks. Always stop to help.",
+  "scene": "forest",
+  "music": {
+    "key": "Bb",
+    "bpm": 92,
+    "seed": 6
+  },
+  "characters": {
+    "fen": {
+      "kind": "fox",
+      "name": "Fen",
+      "color": "#f08a24",
+      "pill": "#e0761a",
+      "voice": {
+        "id": "am_fenrir",
+        "speed": 1.05
+      },
+      "start": {
+        "x": 600,
+        "face": 1,
+        "scale": 0.85,
+        "expr": "sad",
+        "pose": "crouch"
+      }
+    },
+    "bruno": {
+      "kind": "bear",
+      "name": "Bruno",
+      "color": "#9a6440",
+      "pill": "#8a5532",
+      "voice": {
+        "id": "am_michael",
+        "speed": 0.92
+      },
+      "start": {
+        "x": -250,
+        "face": 1,
+        "scale": 0.82
+      }
+    },
+    "bo": {
+      "kind": "bird",
+      "name": "Bo",
+      "color": "#3d9df3",
+      "voice": {
+        "id": "af_kore",
+        "speed": 1.0
+      },
+      "start": {
+        "x": -150,
+        "face": 1,
+        "scale": 0.9,
+        "y": 900
+      }
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "Fen the fox tripped on a root and hurt his paw.",
+      "cam": {
+        "follow": [
+          "fen"
+        ],
+        "zoom": 1.4
+      },
+      "act": {
+        "fen": {
+          "expr": "sad"
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "Ouch! Can anyone help me, please?"
+    },
+    {
+      "speaker": "narrator",
+      "text": "Bo flew by. But he was in a big hurry.",
+      "cam": {
+        "follow": [
+          "fen"
+        ],
+        "zoom": 1.1
+      },
+      "act": {
+        "bo": {
+          "move": "fly",
+          "to": [
+            640,
+            980
+          ],
+          "during": [
+            0.0,
+            1.0
+          ]
+        },
+        "fen": {
+          "look": "up"
+        }
+      }
+    },
+    {
+      "speaker": "bo",
+      "text": "Sorry, Fen! I'm too busy today!",
+      "act": {
+        "bo": {
+          "move": "fly",
+          "to": [
+            1350,
+            760
+          ],
+          "during": [
+            0.1,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Then came Bruno, the big bear. Everyone thought he was scary.",
+      "cam": {
+        "follow": [
+          "fen",
+          "bruno"
+        ],
+        "zoom": 1.05
+      },
+      "act": {
+        "bruno": {
+          "move": "walk",
+          "to": 320,
+          "during": [
+            0.0,
+            0.9
+          ],
+          "expr": "happy"
+        },
+        "fen": {
+          "look": "ahead",
+          "expr": "scared",
+          "pose": "shiver"
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "Oh no... Please don't hurt me!",
+      "cam": {
+        "follow": [
+          "fen"
+        ],
+        "zoom": 1.35
+      }
+    },
+    {
+      "speaker": "bruno",
+      "text": "Hurt you? No, little friend. I'm here to help.",
+      "cam": {
+        "follow": [
+          "bruno"
+        ],
+        "zoom": 1.35
+      },
+      "act": {
+        "fen": {
+          "pose": "crouch",
+          "expr": "worried"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Bruno wrapped Fen's paw, and helped him all the way home.",
+      "cam": {
+        "follow": [
+          "fen",
+          "bruno"
+        ],
+        "zoom": 1.1
+      },
+      "act": {
+        "fen": {
+          "pose": "idle",
+          "expr": "happy",
+          "move": "walk",
+          "to": 900,
+          "during": [
+            0.2,
+            1.0
+          ]
+        },
+        "bruno": {
+          "move": "walk",
+          "to": 640,
+          "during": [
+            0.15,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "Thank you, Bruno! You're the kindest friend ever!",
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "cam": {
+        "follow": [
+          "fen",
+          "bruno"
+        ],
+        "zoom": 1.2
+      },
+      "act": {
+        "fen": {
+          "face": -1,
+          "expr": "excited",
+          "pose": "cheer"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Never judge someone by how they look. And always stop to help.",
+      "act": {
+        "fen": {
+          "pose": "idle",
+          "expr": "happy"
+        }
+      }
+    }
+  ],
+  "outro": {
+    "headline": "Stop and help someone today.",
+    "sub": "A new story every day"
+  },
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "camera": {
+    "zoom": 1.2
+  }
+}

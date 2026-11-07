@@ -40,8 +40,24 @@ Copy a file in `stories/` and edit it. Each **beat** is one spoken line plus wha
 | `sfx` | `[{ "name": "sparkle" \| "boing" \| "whoosh" \| "pop", "at": 0–1 }]` |
 | `cam` | camera for this beat: `follow` (character ids), `zoom` |
 
-Character kinds: `turtle`, `bunny`, `bird`. Scenes: `hill`, `river`.
-Voices: any Kokoro voice id, e.g. `af_heart`, `af_bella`, `af_kore`, `am_puck`, `am_michael`.
+Beats can also set the mood:
+
+| Field | Values |
+|---|---|
+| `sky` | `day` `sunset` `night` `dawn` `storm`, with a smooth change over `skyFade` seconds |
+| `rain`, `rainbow` | 0–1 |
+| `flash` | `[fractions]`: a lightning flash plus thunder |
+| `props` | per-prop changes: `show`, `to`, `full` (basket), `grow` (seed → tree), `glow` (lantern), `during` |
+
+Characters (`kind`): `turtle` (Pip), `bunny` (Luna), `bird` (Bo), `fox` (Fen), `bear` (Bruno), `lamb` (Mila).
+Scenes: `meadow`, `forest`, `hill`, `river`. Props: `basket`, `apple`, `sprout`, `lantern` (can `attach` to a character).
+Expressions also include `angry`; poses also include `listen`, `flipped`, `sit`.
+Voices: any Kokoro voice id, e.g. `af_heart`, `af_bella`, `af_kore`, `am_puck`, `am_michael`, `am_fenrir`, `bf_emma`.
+
+Stories 003–012 come from `stories/make_stories.py`, which holds the recurring cast so every
+character has the same look and voice in every episode. Each story teaches a value from Bible
+teaching (sharing, honesty, forgiveness, hope, being a light, patience, kindness, gratitude,
+being loved, self-worth, fresh starts) in everyday words, without quoting scripture.
 
 ## How it works
 

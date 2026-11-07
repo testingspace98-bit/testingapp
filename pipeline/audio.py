@@ -14,8 +14,13 @@ import soundfile as sf
 
 SR = 44100
 NOTE = {"C": 0, "C#": 1, "D": 2, "Eb": 3, "E": 4, "F": 5, "F#": 6, "G": 7, "Ab": 8, "A": 9, "Bb": 10, "B": 11}
-# I - V - vi - IV, the classic feel-good progression (scale degrees in semitones)
-PROGRESSION = [(0, "maj"), (7, "maj"), (9, "min"), (5, "maj")]
+# feel-good progressions (scale degree in semitones, chord quality); the story's seed picks one
+PROGRESSIONS = [
+    [(0, "maj"), (7, "maj"), (9, "min"), (5, "maj")],   # I V vi IV
+    [(9, "min"), (5, "maj"), (0, "maj"), (7, "maj")],   # vi IV I V
+    [(0, "maj"), (9, "min"), (5, "maj"), (7, "maj")],   # I vi IV V
+    [(0, "maj"), (5, "maj"), (9, "min"), (7, "maj")],   # I IV vi V
+]
 
 
 def midi_hz(m):
@@ -78,7 +83,7 @@ def add(buf, sig, t):
     buf[i:j] += sig[: j - i]
 
 
-def compose(duration, key, bpm, seed, outro_start):
+def compose(duration, key, bpm, seed, outro_start, mood="bright"):
     rng = np.random.default_rng(seed)
     beat = 60.0 / bpm
     bar = 4 * beat
@@ -86,7 +91,9 @@ def compose(duration, key, bpm, seed, outro_start):
     n = int((duration + 3) * SR)
     uke, mel, low, perc = (np.zeros(n) for _ in range(4))
 
-    strum = [(0, 1.0), (1, 0.7), (1.5, 0.55), (2.5, 0.6), (3, 0.75), (3.5, 0.55)]
+    PROGRESSION = PROGRESSIONS[seed % len(PROGRESSIONS)]
+    calm = mood == "calm"
+    strum = [(0, 0.9), (2, 0.6), (3, 0.45)] if calm else [(0, 1.0), (1, 0.7), (1.5, 0.55), (2.5, 0.6), (3, 0.75), (3.5, 0.55)]
     # a gentle melody shape over each chord (indexes into the chord's tones, two octaves up)
     motifs = [[0, 1, 2, 1], [2, 1, 0, 1], [0, 2, 1, 2], [1, 2, 0, None]]
     nbars = int(np.ceil(duration / bar)) + 1
@@ -100,7 +107,7 @@ def compose(duration, key, bpm, seed, outro_start):
                 add(uke, pluck(midi_hz(m), 1.2, vel * (0.9 if k else 1.0)), t + k * 0.012)
         add(low, bass(midi_hz(root - 12 + deg), beat * 1.8, 1.0), t_bar)
         add(low, bass(midi_hz(root - 12 + deg + 7), beat * 1.8, 0.7), t_bar + 2 * beat)
-        for e in range(8):
+        for e in range(0 if calm else 8):
             add(perc, shaker(0.08, rng, 0.9 if e % 2 else 0.5), t_bar + e * beat / 2)
         # melody from bar 2 on, brighter on the final stretch
         if b >= 1:
@@ -135,6 +142,13 @@ def sfx(name):
         n = int(0.18 * SR); t = np.arange(n) / SR
         f = 900 * np.exp(-t * 18) + 300
         return 0.6 * np.sin(2 * np.pi * np.cumsum(f) / SR) * env_ad(n, 0.002, 0.05)
+    if name == "thunder":
+        n = int(2.2 * SR); t = np.arange(n) / SR
+        noise = np.random.default_rng(3).standard_normal(n)
+        k = np.hanning(400); k /= k.sum()
+        low = np.convolve(noise, k, mode="same")
+        crack = noise * np.exp(-t * 30) * 0.15
+        return 3.0 * (low * env_ad(n, 0.03, 0.7) + crack)
     if name == "sparkle":
         out = np.zeros(int(1.4 * SR))
         for i, m in enumerate([84, 88, 91, 96, 100]):
@@ -147,7 +161,7 @@ def main(build_dir):
     tl = json.load(open(os.path.join(build_dir, "timeline.json")))
     dur = tl["duration"]
     m = tl["story"]["music"]
-    music = compose(dur, m["key"], m["bpm"], m.get("seed", 1), tl["outroStart"])
+    music = compose(dur, m["key"], m["bpm"], m.get("seed", 1), tl["outroStart"], m.get("mood", "bright"))
 
     voice, vsr = sf.read(os.path.join(build_dir, "voice.wav"))
     idx = np.arange(int(dur * SR)) * vsr / SR

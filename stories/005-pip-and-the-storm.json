@@ -1,0 +1,203 @@
+{
+  "id": "005-pip-and-the-storm",
+  "title": "Pip and the Storm",
+  "lesson": "Every storm passes. The sun will shine again.",
+  "scene": "meadow",
+  "sky": "storm",
+  "music": {
+    "key": "D",
+    "bpm": 84,
+    "seed": 3,
+    "mood": "calm"
+  },
+  "characters": {
+    "pip": {
+      "kind": "turtle",
+      "name": "Pip",
+      "color": "#4caf50",
+      "pill": "#3a9a3e",
+      "voice": {
+        "id": "am_puck",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 800,
+        "face": -1,
+        "scale": 0.85
+      }
+    },
+    "bo": {
+      "kind": "bird",
+      "name": "Bo",
+      "color": "#3d9df3",
+      "voice": {
+        "id": "af_kore",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 1250,
+        "face": -1,
+        "scale": 0.9,
+        "y": 600
+      }
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "The sky turned dark. The wind howled. And the rain poured down.",
+      "flash": [
+        0.55
+      ],
+      "cam": {
+        "follow": [
+          "pip"
+        ],
+        "zoom": 1.3
+      },
+      "act": {
+        "pip": {
+          "expr": "scared",
+          "pose": "shiver"
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "I'm scared! What if this storm never ends?",
+      "flash": [
+        0.75
+      ],
+      "act": {
+        "pip": {
+          "look": "up"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Then his friend Bo flew down beside him.",
+      "cam": {
+        "follow": [
+          "pip",
+          "bo"
+        ],
+        "zoom": 1.15
+      },
+      "act": {
+        "bo": {
+          "move": "fly",
+          "to": [
+            600,
+            1220
+          ],
+          "during": [
+            0.0,
+            0.9
+          ],
+          "expr": "happy"
+        },
+        "pip": {
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "bo",
+      "text": "Storms can feel very big, Pip. But they never last forever.",
+      "act": {
+        "pip": {
+          "expr": "worried",
+          "pose": "idle"
+        }
+      }
+    },
+    {
+      "speaker": "bo",
+      "text": "And you don't have to face it alone. I'm right here with you."
+    },
+    {
+      "speaker": "pip",
+      "text": "Okay. I can be brave, as long as we're together.",
+      "cam": {
+        "follow": [
+          "pip"
+        ],
+        "zoom": 1.3
+      },
+      "act": {
+        "pip": {
+          "expr": "happy"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "They waited together. And slowly, the rain stopped.",
+      "sky": "day",
+      "skyFade": 3.5,
+      "cam": {
+        "follow": [
+          "pip",
+          "bo"
+        ],
+        "zoom": 1.1
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "The sun came out, and a rainbow filled the sky!",
+      "rainbow": 1,
+      "skyFade": 2.0,
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "cam": {
+        "follow": [
+          "pip",
+          "bo"
+        ],
+        "zoom": 1.0
+      },
+      "act": {
+        "pip": {
+          "expr": "excited",
+          "pose": "cheer",
+          "look": "up"
+        },
+        "bo": {
+          "expr": "excited"
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "Wow! It's so beautiful!"
+    },
+    {
+      "speaker": "narrator",
+      "text": "Every storm passes. Hold on, because the sun will shine again.",
+      "act": {
+        "pip": {
+          "pose": "idle",
+          "expr": "happy",
+          "look": "ahead"
+        }
+      }
+    }
+  ],
+  "outro": {
+    "headline": "Hold on. The sun will shine again.",
+    "sub": "A new story every day"
+  },
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "camera": {
+    "zoom": 1.2
+  }
+}

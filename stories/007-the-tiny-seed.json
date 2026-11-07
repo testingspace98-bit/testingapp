@@ -1,0 +1,230 @@
+{
+  "id": "007-the-tiny-seed",
+  "title": "The Tiny Seed",
+  "lesson": "Big things start small. Don't give up.",
+  "scene": "meadow",
+  "music": {
+    "key": "E",
+    "bpm": 90,
+    "seed": 5
+  },
+  "characters": {
+    "luna": {
+      "kind": "bunny",
+      "name": "Luna",
+      "color": "#f4eaff",
+      "pill": "#9a7fd1",
+      "voice": {
+        "id": "af_bella",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 360,
+        "face": 1,
+        "scale": 0.85
+      }
+    },
+    "pip": {
+      "kind": "turtle",
+      "name": "Pip",
+      "color": "#4caf50",
+      "pill": "#3a9a3e",
+      "voice": {
+        "id": "am_puck",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 1250,
+        "face": -1,
+        "scale": 0.85
+      }
+    }
+  },
+  "props": {
+    "seed": {
+      "kind": "sprout",
+      "x": 600,
+      "grow": 0
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "Luna planted a tiny seed in the soft, brown earth.",
+      "cam": {
+        "follow": [
+          "luna"
+        ],
+        "zoom": 1.35
+      },
+      "act": {
+        "luna": {
+          "expr": "happy",
+          "pose": "crouch"
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "Grow, little seed! Grow right now!",
+      "act": {
+        "luna": {
+          "expr": "excited",
+          "pose": "bounce"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "But nothing happened.",
+      "hold": 0.4,
+      "act": {
+        "luna": {
+          "expr": "worried",
+          "pose": "idle",
+          "look": "down"
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "Maybe it's broken. Maybe I should just give up.",
+      "act": {
+        "luna": {
+          "expr": "sad"
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "Don't give up, Luna! The best things grow slowly.",
+      "cam": {
+        "follow": [
+          "luna",
+          "pip"
+        ],
+        "zoom": 1.1
+      },
+      "act": {
+        "pip": {
+          "expr": "happy",
+          "move": "walk",
+          "to": 840,
+          "during": [
+            0.0,
+            0.6
+          ]
+        },
+        "luna": {
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "Just keep watering it, and trust it to grow."
+    },
+    {
+      "speaker": "narrator",
+      "text": "So Luna waited. Day after day.",
+      "sky": "sunset",
+      "skyFade": 1.5,
+      "act": {
+        "luna": {
+          "expr": "determined"
+        }
+      },
+      "props": {
+        "seed": {
+          "grow": 0.3,
+          "during": [
+            0.0,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Night after night.",
+      "sky": "night",
+      "skyFade": 1.2,
+      "hold": 0.3,
+      "props": {
+        "seed": {
+          "grow": 0.5,
+          "during": [
+            0.0,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Until one bright morning...",
+      "sky": "day",
+      "skyFade": 2.0,
+      "hold": 0.5,
+      "cam": {
+        "follow": [
+          "luna",
+          "pip"
+        ],
+        "zoom": 1.0
+      },
+      "props": {
+        "seed": {
+          "grow": 1.0,
+          "during": [
+            0.1,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "Pip, look! It grew into a beautiful flowering tree!",
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "act": {
+        "luna": {
+          "expr": "excited",
+          "pose": "cheer",
+          "look": "up"
+        },
+        "pip": {
+          "expr": "excited",
+          "look": "up"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Big things often start small. Keep going, and never give up.",
+      "act": {
+        "luna": {
+          "pose": "idle",
+          "expr": "happy",
+          "look": "ahead"
+        }
+      }
+    }
+  ],
+  "outro": {
+    "headline": "Good things grow. Keep going!",
+    "sub": "A new story every day"
+  },
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "camera": {
+    "zoom": 1.2
+  }
+}

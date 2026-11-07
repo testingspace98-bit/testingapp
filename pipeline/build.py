@@ -122,6 +122,8 @@ def motion_segments(story, beats):
             if act["move"] == "slide":
                 sfx.append({"name": "whoosh", "t": round(t0, 3)})
             segs[cid].append(seg)
+        for f in b.get("flash", []):
+            sfx.append({"name": "thunder", "t": round(b["start"] + f * dur, 3)})
         for s in b.get("sfx", []):
             sfx.append({"name": s["name"], "t": round(b["start"] + s.get("at", 0) * dur, 3)})
     return segs, sfx
@@ -174,7 +176,7 @@ def main(story_path, out_dir):
         "fps": FPS,
         "duration": duration,
         "outroStart": round(t, 3),
-        "story": {k: story.get(k) for k in ("id", "title", "scene", "characters", "outro", "music", "camera")},
+        "story": {k: story.get(k) for k in ("id", "title", "scene", "characters", "outro", "music", "camera", "props", "sky")},
         "beats": beats,
         "segments": segs,
         "sfx": sorted(sfx, key=lambda s: s["t"]),

@@ -1,0 +1,301 @@
+{
+  "id": "012-a-brand-new-morning",
+  "title": "A Brand New Morning",
+  "lesson": "Every morning is a fresh new start.",
+  "scene": "river",
+  "sky": "sunset",
+  "music": {
+    "key": "D",
+    "bpm": 92,
+    "seed": 10
+  },
+  "characters": {
+    "luna": {
+      "kind": "bunny",
+      "name": "Luna",
+      "color": "#f4eaff",
+      "pill": "#9a7fd1",
+      "voice": {
+        "id": "af_bella",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 150,
+        "face": 1,
+        "scale": 0.85,
+        "expr": "angry"
+      }
+    },
+    "fen": {
+      "kind": "fox",
+      "name": "Fen",
+      "color": "#f08a24",
+      "pill": "#e0761a",
+      "voice": {
+        "id": "am_fenrir",
+        "speed": 1.05
+      },
+      "start": {
+        "x": 960,
+        "face": -1,
+        "scale": 0.85
+      }
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "Luna had a long day, and she felt tired and cranky.",
+      "cam": {
+        "follow": [
+          "luna"
+        ],
+        "zoom": 1.35
+      },
+      "act": {
+        "luna": {
+          "expr": "angry"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Then her friend Fen came hopping across the stones.",
+      "hold": 0.4,
+      "cam": {
+        "follow": [
+          "luna",
+          "fen"
+        ],
+        "zoom": 1.0
+      },
+      "act": {
+        "fen": {
+          "expr": "excited",
+          "move": "jump",
+          "path": [
+            655,
+            460,
+            330
+          ],
+          "during": [
+            0.0,
+            0.95
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "Hi Luna! Want to play with me?",
+      "cam": {
+        "follow": [
+          "luna",
+          "fen"
+        ],
+        "zoom": 1.3
+      },
+      "act": {
+        "fen": {
+          "pose": "bounce"
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "No! Go away, Fen! Leave me alone!",
+      "cam": {
+        "follow": [
+          "luna"
+        ],
+        "zoom": 1.4
+      },
+      "act": {
+        "luna": {
+          "pose": "shiver"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Fen's ears drooped. He hopped back home, all alone.",
+      "hold": 0.4,
+      "cam": {
+        "follow": [
+          "luna",
+          "fen"
+        ],
+        "zoom": 1.0
+      },
+      "act": {
+        "luna": {
+          "pose": "idle"
+        },
+        "fen": {
+          "pose": "idle",
+          "expr": "sad",
+          "face": 1,
+          "move": "jump",
+          "path": [
+            460,
+            655,
+            960
+          ],
+          "during": [
+            0.15,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "That night, Luna couldn't sleep.",
+      "sky": "night",
+      "skyFade": 2.0,
+      "cam": {
+        "follow": [
+          "luna"
+        ],
+        "zoom": 1.35
+      },
+      "act": {
+        "luna": {
+          "expr": "sad"
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "I was so mean to my friend. I wish I could take it back.",
+      "act": {
+        "luna": {
+          "look": "down"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Then the sun came up. A brand new morning!",
+      "sky": "dawn",
+      "skyFade": 2.5,
+      "cam": {
+        "follow": [
+          "luna"
+        ],
+        "zoom": 1.2
+      },
+      "act": {
+        "luna": {
+          "expr": "happy",
+          "look": "up"
+        },
+        "fen": {
+          "face": -1,
+          "expr": "sad"
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "Today, I can make it right!",
+      "hold": 0.5,
+      "sky": "day",
+      "skyFade": 3.0,
+      "cam": {
+        "follow": [
+          "luna",
+          "fen"
+        ],
+        "zoom": 1.0
+      },
+      "act": {
+        "luna": {
+          "expr": "determined",
+          "look": "ahead",
+          "move": "jump",
+          "path": [
+            460,
+            655,
+            790
+          ],
+          "during": [
+            0.2,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "Fen, I'm sorry I was mean. Will you forgive me?",
+      "cam": {
+        "follow": [
+          "luna",
+          "fen"
+        ],
+        "zoom": 1.3
+      },
+      "act": {
+        "luna": {
+          "expr": "worried"
+        },
+        "fen": {
+          "expr": "worried"
+        }
+      }
+    },
+    {
+      "speaker": "fen",
+      "text": "Of course I will! Every day is a fresh start!",
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "act": {
+        "fen": {
+          "expr": "excited",
+          "pose": "cheer"
+        },
+        "luna": {
+          "expr": "excited",
+          "pose": "cheer"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Yesterday is over. Every morning brings a brand new start.",
+      "cam": {
+        "follow": [
+          "luna",
+          "fen"
+        ],
+        "zoom": 1.15
+      },
+      "act": {
+        "fen": {
+          "pose": "idle",
+          "expr": "happy"
+        },
+        "luna": {
+          "pose": "idle",
+          "expr": "happy"
+        }
+      }
+    }
+  ],
+  "outro": {
+    "headline": "Every morning is a fresh start!",
+    "sub": "A new story every day"
+  },
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "camera": {
+    "zoom": 1.2
+  }
+}
