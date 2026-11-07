@@ -18,6 +18,21 @@ Turns a short story file into a finished YouTube Short (1080×1920, 30 fps). Eac
 
 You also need `ffmpeg`, Node 18+ and Playwright's Chromium.
 
+## Tamil versions
+
+Every story also has a Tamil version in `stories/ta.json` (one Tamil line per beat, plus the title,
+character names and end card). Tamil speech uses the [AI4Bharat Indic-TTS](https://github.com/AI4Bharat/Indic-TTS)
+Tamil model (MIT licence): one female and one male voice, with each character given its own pitch.
+Captions use the Baloo Thambi 2 font.
+
+```bash
+./setup.sh ta                                     # one time
+./make_video.sh stories/005-pip-and-the-storm.json ta
+# -> output/005-pip-and-the-storm-ta.mp4
+```
+
+The Tamil text was written by Claude. Have a native speaker review it before publishing.
+
 ## Writing a new story
 
 Copy a file in `stories/` and edit it. Each **beat** is one spoken line plus what happens during it:

@@ -5,6 +5,7 @@
 <style>
   @font-face { font-family: "Fredoka"; src: url("../assets/fonts/Fredoka.ttf"); font-weight: 700; }
   @font-face { font-family: "Baloo"; src: url("../assets/fonts/Baloo2.ttf"); font-weight: 800; }
+  @font-face { font-family: "Thambi"; src: url("../assets/fonts/BalooThambi2.ttf"); font-weight: 800; }
   html, body { margin: 0; padding: 0; width: 1080px; height: 1920px; overflow: hidden; background: #8fd3ff; }
   #stage { position: absolute; inset: 0; width: 1080px; height: 1920px; }
   svg { position: absolute; inset: 0; }
@@ -28,6 +29,12 @@
   #card p { margin: 0 0 34px; font: 700 50px "Fredoka", sans-serif; color: #5a6390; }
   #follow { display: inline-block; font: 700 54px "Fredoka", sans-serif; color: #fff; background: #ff4d5e;
             border: 7px solid #1f2a52; border-radius: 60px; padding: 12px 50px 16px; }
+  /* Tamil */
+  body.ta #title, body.ta #card h1 { font-family: "Thambi", sans-serif; }
+  body.ta #cap { font: 800 70px/1.3 "Thambi", sans-serif; -webkit-text-stroke: 14px #1f2a52; }
+  body.ta #cap span { margin: 0 16px; }
+  body.ta #pill, body.ta #card p, body.ta #follow { font-family: "Thambi", sans-serif; font-weight: 800; }
+  body.ta #card h1 { font-size: 72px; line-height: 1.25; }
 </style>
 </head>
 <body>

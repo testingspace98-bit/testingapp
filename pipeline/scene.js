@@ -856,6 +856,8 @@ window.setup = function (tl) {
   $("title").style.whiteSpace = "nowrap";
   $("cardH").textContent = tl.story.outro.headline;
   $("cardP").textContent = tl.story.outro.sub;
+  if (tl.story.outro.follow) $("follow").textContent = tl.story.outro.follow;
+  if (tl.story.lang) document.body.classList.add(tl.story.lang);
   return document.fonts.ready.then(() => true);
 };
 

@@ -1,6 +1,10 @@
 """Turn a story JSON file into voice audio + a frame-accurate timeline.
 
-Usage: python3 pipeline/build.py stories/<story>.json build/<story-id>
+Usage: python3 pipeline/build.py stories/<story>.json build/<story-id> [--lang ta]
+
+English uses Kokoro voices. Tamil (--lang ta) uses the AI4Bharat Indic-TTS Tamil
+voices (MIT licence), with each character given its own pitch, and the Tamil text
+from stories/ta.json.
 
 Writes:
   voice.wav      - all spoken lines placed on one track (24 kHz mono)
@@ -11,6 +15,9 @@ import math
 import os
 import re
 import sys
+
+import subprocess
+import tempfile
 
 import numpy as np
 import soundfile as sf
@@ -38,6 +45,35 @@ def envelope(audio, sr):
     return [round(float(v), 2) for v in sm]
 
 
+# Tamil: one male and one female base voice; characters get their own pitch (semitones) and pace
+TA_DIR = os.path.join(ROOT, "models", "ta", "ta")
+TA_VOICES = {
+    "narrator": ("female", 0.0, 1.06),
+    "pip": ("male", 3.0, 1.08), "fen": ("male", 1.5, 1.1), "bruno": ("male", -2.5, 1.0),
+    "luna": ("female", 2.0, 1.08), "mila": ("female", 3.5, 1.08), "bo": ("female", 4.0, 1.1),
+}
+
+
+class TamilTTS:
+    def __init__(self):
+        from TTS.utils.synthesizer import Synthesizer
+        self.syn = Synthesizer(
+            tts_checkpoint=f"{TA_DIR}/fastpitch/best_model.pth", tts_config_path=f"{TA_DIR}/fastpitch/config.json",
+            tts_speakers_file=f"{TA_DIR}/fastpitch/speakers.pth", vocoder_checkpoint=f"{TA_DIR}/hifigan/best_model.pth",
+            vocoder_config=f"{TA_DIR}/hifigan/config.json", use_cuda=False)
+
+    def create(self, text, who):
+        base, semis, tempo = TA_VOICES.get(who, TA_VOICES["narrator"])
+        wav = np.array(self.syn.tts(text, speaker_name=base), dtype=np.float32)
+        with tempfile.TemporaryDirectory() as d:
+            sf.write(f"{d}/in.wav", wav, self.syn.output_sample_rate)
+            af = f"rubberband=pitch={2 ** (semis / 12):.4f}:tempo={tempo}:pitchq=quality,silenceremove=start_periods=1:start_threshold=-45dB"
+            af += ",areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse"
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", f"{d}/in.wav", "-af", af, "-ar", "24000", f"{d}/out.wav"], check=True)
+            out, sr = sf.read(f"{d}/out.wav", dtype="float32")
+        return out, sr
+
+
 def word_timings(kokoro, text, audio, sr, lang):
     """Estimate when each word is spoken.
 
@@ -49,8 +85,11 @@ def word_timings(kokoro, text, audio, sr, lang):
     weights = []
     for w in words:
         core = re.sub(r"[^\w']", "", w)
-        ph = kokoro.tokenizer.phonemize(core, lang) if core else ""
-        wt = max(len(ph.replace(" ", "")), 1)
+        if lang == "ta":  # no phonemizer for Tamil: count letters, ignoring vowel signs
+            wt = max(len(re.sub(r"[\u0BBE-\u0BCD\u0BD7]", "", core)), 1)
+        else:
+            ph = kokoro.tokenizer.phonemize(core, lang) if core else ""
+            wt = max(len(ph.replace(" ", "")), 1)
         pause = 4 if re.search(r"[.!?…]$", w) else 2 if re.search(r"[,;:—-]$", w) else 0
         weights.append((wt, pause))
 
@@ -129,11 +168,30 @@ def motion_segments(story, beats):
     return segs, sfx
 
 
-def main(story_path, out_dir):
+def localize(story, lang):
+    """Swap in the Tamil text, title, names and end card."""
+    tr = json.load(open(os.path.join(ROOT, "stories", f"{lang}.json")))
+    t = tr["stories"][story["id"]]
+    assert len(t["lines"]) == len(story["beats"]), f"{story['id']}: {len(t['lines'])} lines for {len(story['beats'])} beats"
+    for b, line in zip(story["beats"], t["lines"]):
+        b["text"] = line
+    story["title"] = t["title"]
+    story["outro"] = {"headline": t["headline"], "sub": tr["sub"], "follow": tr["follow"]}
+    for cid, c in story["characters"].items():
+        c["name"] = tr["names"].get(cid, c["name"])
+    story["id"] = story["id"] + "-" + lang
+    story["lang"] = lang
+    return story
+
+
+def main(story_path, out_dir, ui_lang=None):
     story = json.load(open(story_path))
+    if ui_lang:
+        story = localize(story, ui_lang)
     os.makedirs(out_dir, exist_ok=True)
     kokoro = Kokoro(MODEL, VOICES)
-    lang = story.get("lang", "en-us")
+    tamil = TamilTTS() if ui_lang == "ta" else None
+    lang = "ta" if ui_lang == "ta" else story.get("lang", "en-us")
     voices = {"narrator": story["narrator"]}
     voices.update({cid: c["voice"] for cid, c in story["characters"].items()})
 
@@ -143,7 +201,10 @@ def main(story_path, out_dir):
     for i, raw in enumerate(story["beats"]):
         b = dict(raw)
         v = voices[b["speaker"]]
-        audio, sr = kokoro.create(b["text"], voice=v["id"], speed=v.get("speed", 1.0), lang=lang)
+        if tamil:
+            audio, sr = tamil.create(b["text"], b["speaker"])
+        else:
+            audio, sr = kokoro.create(b["text"], voice=v["id"], speed=v.get("speed", 1.0), lang=lang)
         audio = audio.astype(np.float32)
         dur = len(audio) / sr
         b["start"] = round(t, 3)
@@ -154,7 +215,7 @@ def main(story_path, out_dir):
         for w in words:
             w["s"] = round(w["s"] + t, 3)
             w["e"] = round(w["e"] + t, 3)
-        b["chunks"] = caption_chunks(words)
+        b["chunks"] = caption_chunks(words, 2 if lang == "ta" else 3)
         clips.append((t, audio))
         beats.append(b)
         t = b["end"]
@@ -176,7 +237,7 @@ def main(story_path, out_dir):
         "fps": FPS,
         "duration": duration,
         "outroStart": round(t, 3),
-        "story": {k: story.get(k) for k in ("id", "title", "scene", "characters", "outro", "music", "camera", "props", "sky")},
+        "story": {k: story.get(k) for k in ("id", "title", "scene", "characters", "outro", "music", "camera", "props", "sky", "lang")},
         "beats": beats,
         "segments": segs,
         "sfx": sorted(sfx, key=lambda s: s["t"]),
@@ -186,4 +247,10 @@ def main(story_path, out_dir):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    args = sys.argv[1:]
+    lang = None
+    if "--lang" in args:
+        i = args.index("--lang")
+        lang = args[i + 1]
+        del args[i:i + 2]
+    main(args[0], args[1], lang)
