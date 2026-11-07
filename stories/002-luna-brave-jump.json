@@ -1,0 +1,251 @@
+{
+  "id": "002-luna-brave-jump",
+  "title": "Luna's Brave Jump",
+  "lesson": "Being brave doesn't mean you're not scared. It means you try anyway.",
+  "scene": "river",
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "music": {
+    "key": "F",
+    "bpm": 92,
+    "seed": 2
+  },
+  "camera": {
+    "zoom": 1.3
+  },
+  "characters": {
+    "pip": {
+      "kind": "turtle",
+      "name": "Pip",
+      "color": "#4caf50",
+      "voice": {
+        "id": "am_puck",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 955,
+        "face": -1,
+        "scale": 0.8
+      }
+    },
+    "luna": {
+      "kind": "bunny",
+      "name": "Luna",
+      "color": "#f4eaff",
+      "voice": {
+        "id": "af_bella",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 180,
+        "face": 1,
+        "scale": 0.95
+      }
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "Luna the bunny wanted to play with her friend Pip.",
+      "act": {
+        "luna": {
+          "expr": "happy",
+          "pose": "bounce"
+        },
+        "pip": {
+          "expr": "happy"
+        }
+      },
+      "cam": {
+        "follow": [
+          "luna"
+        ],
+        "zoom": 1.3
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "Come on over, Luna!",
+      "act": {
+        "pip": {
+          "expr": "excited",
+          "pose": "bounce"
+        },
+        "luna": {
+          "pose": "idle"
+        }
+      },
+      "cam": {
+        "follow": [
+          "pip"
+        ],
+        "zoom": 1.3
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "But there was a river in the way.",
+      "act": {
+        "luna": {
+          "expr": "worried",
+          "look": "down"
+        },
+        "pip": {
+          "pose": "idle",
+          "expr": "happy"
+        }
+      },
+      "cam": {
+        "follow": [
+          "luna",
+          "pip"
+        ],
+        "zoom": 1.0
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "What if I slip? What if I can't do it?",
+      "act": {
+        "luna": {
+          "expr": "scared",
+          "pose": "shiver",
+          "look": "ahead"
+        }
+      },
+      "cam": {
+        "follow": [
+          "luna"
+        ],
+        "zoom": 1.45
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "It's okay to feel scared. Being brave means you try anyway!",
+      "act": {
+        "pip": {
+          "expr": "happy"
+        },
+        "luna": {
+          "expr": "worried",
+          "pose": "idle"
+        }
+      },
+      "cam": {
+        "follow": [
+          "pip"
+        ],
+        "zoom": 1.35
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "Okay. Deep breath. One, two, three!",
+      "hold": 0.2,
+      "act": {
+        "luna": {
+          "expr": "determined",
+          "pose": "crouch"
+        }
+      },
+      "cam": {
+        "follow": [
+          "luna"
+        ],
+        "zoom": 1.45
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Hop! Hop! Hop!",
+      "hold": 0.6,
+      "act": {
+        "luna": {
+          "expr": "excited",
+          "pose": "idle",
+          "move": "jump",
+          "path": [
+            460,
+            655,
+            790
+          ],
+          "during": [
+            0.0,
+            0.92
+          ]
+        },
+        "pip": {
+          "expr": "excited",
+          "move": "walk",
+          "to": 1005,
+          "during": [
+            0.6,
+            0.95
+          ]
+        }
+      },
+      "cam": {
+        "follow": [
+          "luna",
+          "pip"
+        ],
+        "zoom": 1.0
+      }
+    },
+    {
+      "speaker": "luna",
+      "text": "I was scared, and I did it anyway!",
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.0
+        }
+      ],
+      "act": {
+        "luna": {
+          "expr": "excited",
+          "pose": "cheer"
+        },
+        "pip": {
+          "expr": "excited",
+          "pose": "cheer"
+        }
+      },
+      "cam": {
+        "follow": [
+          "luna",
+          "pip"
+        ],
+        "zoom": 1.3
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Courage isn't having no fear. It's taking the jump anyway.",
+      "act": {
+        "luna": {
+          "expr": "happy",
+          "pose": "idle"
+        },
+        "pip": {
+          "expr": "happy",
+          "pose": "idle"
+        }
+      },
+      "cam": {
+        "follow": [
+          "luna",
+          "pip"
+        ],
+        "zoom": 1.15
+      }
+    }
+  ],
+  "outro": {
+    "headline": "Be brave today!",
+    "sub": "A new story every day"
+  }
+}

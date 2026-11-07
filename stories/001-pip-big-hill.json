@@ -1,0 +1,245 @@
+{
+  "id": "001-pip-big-hill",
+  "title": "Pip and the Big Hill",
+  "lesson": "Big goals are reached one small step at a time.",
+  "scene": "hill",
+  "narrator": {
+    "id": "af_heart",
+    "speed": 0.95
+  },
+  "music": {
+    "key": "C",
+    "bpm": 96,
+    "seed": 1
+  },
+  "camera": {
+    "zoom": 1.35,
+    "follow": [
+      "pip"
+    ]
+  },
+  "characters": {
+    "pip": {
+      "kind": "turtle",
+      "name": "Pip",
+      "color": "#4caf50",
+      "voice": {
+        "id": "am_puck",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 190,
+        "face": 1,
+        "scale": 0.95
+      }
+    },
+    "bo": {
+      "kind": "bird",
+      "name": "Bo",
+      "color": "#3d9df3",
+      "voice": {
+        "id": "af_kore",
+        "speed": 1.0
+      },
+      "start": {
+        "x": 1260,
+        "y": 420,
+        "face": -1,
+        "scale": 0.95
+      }
+    }
+  },
+  "beats": [
+    {
+      "speaker": "narrator",
+      "text": "This is Pip. And Pip had a big dream.",
+      "act": {
+        "pip": {
+          "expr": "happy",
+          "pose": "idle"
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "I want to see the whole world from the top of that hill!",
+      "act": {
+        "pip": {
+          "expr": "excited",
+          "pose": "bounce",
+          "look": "up"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "But the hill was very tall. And Pip was very slow.",
+      "act": {
+        "pip": {
+          "expr": "worried",
+          "pose": "idle",
+          "look": "up"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Step by step, Pip began to climb.",
+      "act": {
+        "pip": {
+          "expr": "determined",
+          "move": "walk",
+          "to": 560,
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "Whoa, whoa! Oh no...",
+      "hold": 0.3,
+      "act": {
+        "pip": {
+          "expr": "scared",
+          "move": "slide",
+          "to": 400,
+          "during": [
+            0.0,
+            0.55
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "It's too big. I'll never make it.",
+      "act": {
+        "pip": {
+          "expr": "sad",
+          "pose": "idle",
+          "look": "down"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Then his friend Bo flew down.",
+      "act": {
+        "bo": {
+          "move": "fly",
+          "to": [
+            640,
+            1130
+          ],
+          "during": [
+            0.0,
+            0.85
+          ],
+          "expr": "happy"
+        },
+        "pip": {
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "bo",
+      "text": "Don't look at the whole hill, Pip. Just take the next small step.",
+      "act": {
+        "bo": {
+          "expr": "happy"
+        },
+        "pip": {
+          "expr": "worried",
+          "look": "ahead"
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "Okay. Just one small step.",
+      "act": {
+        "pip": {
+          "expr": "determined",
+          "move": "walk",
+          "to": 560,
+          "during": [
+            0.25,
+            1.0
+          ]
+        },
+        "bo": {
+          "move": "fly",
+          "to": [
+            780,
+            900
+          ],
+          "during": [
+            0.2,
+            1.0
+          ],
+          "face": 1
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "One step. Then another. Then another.",
+      "act": {
+        "pip": {
+          "move": "walk",
+          "to": 860,
+          "during": [
+            0.0,
+            1.0
+          ]
+        },
+        "bo": {
+          "move": "fly",
+          "to": [
+            640,
+            560
+          ],
+          "during": [
+            0.1,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "speaker": "pip",
+      "text": "I did it! I really did it!",
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": 0.05
+        }
+      ],
+      "act": {
+        "pip": {
+          "expr": "excited",
+          "pose": "cheer",
+          "look": "ahead"
+        },
+        "bo": {
+          "expr": "excited"
+        }
+      }
+    },
+    {
+      "speaker": "narrator",
+      "text": "Big dreams are climbed one small step at a time.",
+      "act": {
+        "pip": {
+          "expr": "happy",
+          "pose": "idle"
+        }
+      }
+    }
+  ],
+  "outro": {
+    "headline": "Take one small step today!",
+    "sub": "A new story every day"
+  }
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: "Fredoka"; src: url("../assets/fonts/Fredoka.ttf"); font-weight: 700; }
+  @font-face { font-family: "Baloo"; src: url("../assets/fonts/Baloo2.ttf"); font-weight: 800; }
+  html, body { margin: 0; padding: 0; width: 1080px; height: 1920px; overflow: hidden; background: #8fd3ff; }
+  #stage { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+  svg { position: absolute; inset: 0; }
+
+  .ov { position: absolute; left: 0; width: 1080px; text-align: center; pointer-events: none; }
+  #title { top: 210px; font: 800 100px/1.0 "Baloo", sans-serif; color: #ffd23f;
+           -webkit-text-stroke: 18px #1f2a52; paint-order: stroke fill; letter-spacing: 1px;
+           text-shadow: 0 10px 0 rgba(31,42,82,.35); }
+  #capwrap { top: 360px; }
+  #pill { display: inline-block; font: 700 40px "Fredoka", sans-serif; color: #fff; padding: 6px 26px 8px;
+          border-radius: 40px; border: 5px solid #1f2a52; margin-bottom: 14px; }
+  #cap { width: 940px; margin: 0 auto; font: 700 84px/1.12 "Fredoka", sans-serif; color: #fff;
+         -webkit-text-stroke: 16px #1f2a52; paint-order: stroke fill; }
+  #cap span { display: inline-block; margin: 0 10px; transform-origin: 50% 70%; }
+  #cap span.on { color: #ffd23f; }
+  #shade { position: absolute; inset: 0; background: #16204a; opacity: 0; }
+  #card { position: absolute; left: 90px; top: 560px; width: 900px; padding: 56px 40px 60px; box-sizing: border-box;
+          background: #fffaf0; border: 10px solid #1f2a52; border-radius: 60px; text-align: center;
+          box-shadow: 0 22px 0 rgba(10,16,40,.45); opacity: 0; }
+  #card h1 { margin: 0 0 18px; font: 800 92px/1.02 "Baloo", sans-serif; color: #1f2a52; }
+  #card p { margin: 0 0 34px; font: 700 50px "Fredoka", sans-serif; color: #5a6390; }
+  #follow { display: inline-block; font: 700 54px "Fredoka", sans-serif; color: #fff; background: #ff4d5e;
+            border: 7px solid #1f2a52; border-radius: 60px; padding: 12px 50px 16px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="svg" width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div id="shade"></div>
+  <div id="title" class="ov"></div>
+  <div id="capwrap" class="ov"><div id="pill"></div><div id="cap"></div></div>
+  <div id="card"><h1 id="cardH"></h1><p id="cardP"></p><div id="follow">Follow for more!</div></div>
+</div>
+<script src="scene.js"></script>
+</body>
+</html>
