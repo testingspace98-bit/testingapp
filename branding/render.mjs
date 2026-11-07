@@ -6,11 +6,12 @@ const require = createRequire(import.meta.url);
 const { chromium } = require("playwright");
 const here = dirname(fileURLToPath(import.meta.url));
 const b = await chromium.launch();
-for (const [layout, w, h] of [["profile", 800, 800], ["banner", 2560, 1440]]) {
+for (const [layout, w, h, hero] of [["profile", 800, 800, ""], ["banner", 2560, 1440, ""],
+    ["profile", 800, 800, "pip"], ["profile", 800, 800, "luna"], ["profile", 800, 800, "bruno"]]) {
   const p = await b.newPage({ viewport: { width: w, height: h } });
-  await p.goto(pathToFileURL(resolve(here, "profile.html")).href + `?layout=${layout}&w=${w}&h=${h}`);
+  await p.goto(pathToFileURL(resolve(here, "profile.html")).href + `?layout=${layout}&w=${w}&h=${h}&hero=${hero}`);
   await p.evaluate(() => window.ready);
-  await p.screenshot({ path: resolve(here, `${layout}.png`) });
+  await p.screenshot({ path: resolve(here, `${layout}${hero ? "-" + hero : ""}.png`) });
   await p.close();
 }
 await b.close();

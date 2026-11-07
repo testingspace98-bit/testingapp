@@ -34,7 +34,37 @@ function stars(n, seed, w, h) {
 }
 
 let body;
-if (layout === "profile") {
+const hero = q.get("hero");
+const flowerRow = (n, seed, y0, y1) => { const r = rand(seed); let s = ""; for (let i = 0; i < n; i++) s += flower(60 + r() * 680, y0 + r() * (y1 - y0), 1.4 + r() * 0.8, ["#ff7aa2", "#ffd23f", "#ffffff", "#b388ff"][i % 4]); return s; };
+const heart = (x, y, s, c) => `<path transform="translate(${x},${y}) scale(${s})" d="M 0 30 C -60 -10 -40 -60 0 -30 C 40 -60 60 -10 0 30 Z" fill="${c}" stroke="#1f2a52" stroke-width="5" stroke-linejoin="round"/>`;
+if (layout === "profile" && hero === "pip") {
+  // "Pip & Friends": Pip under a rainbow on a bright day
+  body = `
+    <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5fb8ff"/><stop offset="1" stop-color="#d9f1ff"/></linearGradient></defs>
+    <rect width="800" height="800" fill="url(#bg)"/>
+    ${["#ff5252", "#ff9800", "#ffeb3b", "#66bb6a", "#42a5f5", "#7e57c2"].map((c, i) => `<path d="M ${70 + i * 30} 640 A ${330 - i * 30} ${330 - i * 30} 0 0 1 ${730 - i * 30} 640" fill="none" stroke="${c}" stroke-width="32"/>`).join("")}
+    <ellipse cx="400" cy="820" rx="560" ry="230" fill="#6cc95a" stroke="#3f9f45" stroke-width="6"/>
+    ${flowerRow(7, 3, 660, 740)}
+    ${place("pip", 290, 660, 1.6)}`;
+} else if (layout === "profile" && hero === "luna") {
+  // "Kindness Meadow": Luna in a field of flowers
+  body = `
+    <defs><radialGradient id="bg" cx=".5" cy=".35" r=".8"><stop offset="0" stop-color="#fff6c9"/><stop offset=".5" stop-color="#ffd1e0"/><stop offset="1" stop-color="#b39ddb"/></radialGradient></defs>
+    <rect width="800" height="800" fill="url(#bg)"/>
+    <ellipse cx="400" cy="830" rx="600" ry="250" fill="#7ed957" stroke="#3f9f45" stroke-width="6"/>
+    ${place("luna", 390, 760, 1.55)}
+    ${flowerRow(12, 8, 640, 760)}
+    ${heart(620, 250, 1.1, "#ff6f91")}${heart(190, 300, 0.7, "#ffb3c7")}`;
+} else if (layout === "profile" && hero === "bruno") {
+  // "Brave Little Hearts": Bruno cheering with a big heart
+  body = `
+    <defs><radialGradient id="bg" cx=".5" cy=".45" r=".75"><stop offset="0" stop-color="#ffe9b0"/><stop offset=".6" stop-color="#ff9a8b"/><stop offset="1" stop-color="#e05a7a"/></radialGradient></defs>
+    <rect width="800" height="800" fill="url(#bg)"/>
+    ${heart(400, 300, 4.2, "#ffffff55").replace('stroke="#1f2a52"', 'stroke="none"')}
+    <ellipse cx="400" cy="840" rx="600" ry="240" fill="#7ed957" stroke="#3f9f45" stroke-width="6"/>
+    ${place("bruno", 400, 780, 1.55)}
+    ${heart(610, 210, 1.2, "#ff4d6d")}`;
+} else if (layout === "profile") {
   // circle-safe: everything important sits inside the middle ~70%
   body = `
     <defs>
@@ -73,7 +103,8 @@ for (const id of Object.keys(CAST)) {
   if (!document.getElementById(id + "-eyeL")) continue;
   const flies = CAST[id][0] === "bird";
   KINDS[CAST[id][0]].pose(id, { moving: false, airborne: false, look: "ahead", pose: "idle", expr: "happy", talk: 0, walkPhase: 0 }, 0);
-  applyFace(id, id === "mila" ? EXPR.excited : e, 0, 1, "ahead", flies);
+  applyFace(id, id === "mila" || hero === id ? EXPR.excited : e, 0, 1, "ahead", flies);
+  if (hero === id && id === "bruno") KINDS.bear.pose(id, { moving: false, look: "ahead", pose: "cheer", expr: "excited", talk: 0, walkPhase: 0 }, 0.13);
 }
 PROPS.lantern.update && document.getElementById("lan-flame") && PROPS.lantern.update("lan", {}, 0);
 window.ready = document.fonts.ready;
