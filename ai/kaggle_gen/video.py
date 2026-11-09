@@ -1,6 +1,8 @@
 # Runs on Kaggle's free GPU (T4). Image-to-video with LTX-Video (Lightricks), via diffusers.
 # Input images are embedded below by ai/kaggle.py. Output: /kaggle/working/out/<name>.mp4
-import base64, io, os, time, torch
+import base64, io, os, time
+os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
+import torch
 from PIL import Image
 from diffusers import LTXImageToVideoPipeline
 from diffusers.utils import export_to_video
@@ -10,7 +12,7 @@ JOBS = __JOBS__
 os.makedirs("/kaggle/working/out", exist_ok=True)
 
 # print the model licence so we can check commercial use
-for name in ("LICENSE", "README.md"):
+for name in ("ltx-video-2b-v0.9.license.txt", "ltx-video-2b-v0.9.1.license.txt", "README.md"):
     try:
         p = hf_hub_download("Lightricks/LTX-Video", name)
         open(f"/kaggle/working/out/model-{name}.txt", "w").write(open(p).read())
@@ -30,4 +32,6 @@ for job in JOBS:
                   generator=torch.Generator().manual_seed(job.get("seed", 0))).frames[0]
     export_to_video(frames, f"/kaggle/working/out/{job['name']}.mp4", fps=24)
     print(f"saved {job['name']}.mp4 in {time.time() - t0:.0f}s", flush=True)
+    del frames
+    torch.cuda.empty_cache()
 print("DONE")
