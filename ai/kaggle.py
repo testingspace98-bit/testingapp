@@ -2,6 +2,8 @@
 
 Usage:
   python3 ai/kaggle.py images jobs.json out_dir     # character images with SDXL
+  python3 ai/kaggle.py video  jobs.json out_dir     # image-to-video clips with LTX-Video
+                                                    # (each job: name, image (path), prompt, w, h, frames, steps)
 
 jobs.json: [{"name": "owl", "prompt": "...", "style": "3d" | "2d", "n": 4, "seed": 1}, ...]
 
@@ -31,7 +33,7 @@ def call(path, body=None):
         return json.loads(r.read())
 
 
-def run(code_file, jobs, out_dir, slug="character-generator"):
+def run(code_file, jobs, out_dir, slug="character-generator", poll=30):
     user = call("/hello")["userName"]
     code = open(code_file).read().replace("__JOBS__", json.dumps(jobs))
     res = call("/kernels/push", {
@@ -44,7 +46,7 @@ def run(code_file, jobs, out_dir, slug="character-generator"):
     q = urllib.parse.urlencode({"userName": user, "kernelSlug": slug})
     t0 = time.time()
     while True:
-        time.sleep(30)
+        time.sleep(poll)
         st = call(f"/kernels/status?{q}")["status"]
         print(f"  {int(time.time() - t0)}s {st}", flush=True)
         if st in ("complete", "error", "cancelAcknowledged"):
@@ -54,7 +56,7 @@ def run(code_file, jobs, out_dir, slug="character-generator"):
     got = []
     for f in out.get("files", []):
         name = os.path.basename(f["fileName"])
-        if not name.endswith(".png"):
+        if not name.endswith((".png", ".mp4", ".txt")):
             continue
         urllib.request.urlretrieve(f["url"], os.path.join(out_dir, name))
         got.append(name)
@@ -71,5 +73,16 @@ def run(code_file, jobs, out_dir, slug="character-generator"):
 
 if __name__ == "__main__":
     mode, jobs_file, out_dir = sys.argv[1:4]
-    assert mode == "images"
-    run(os.path.join(HERE, "kaggle_gen", "generate.py"), json.load(open(jobs_file)), out_dir)
+    jobs = json.load(open(jobs_file))
+    if mode == "images":
+        run(os.path.join(HERE, "kaggle_gen", "generate.py"), jobs, out_dir)
+    elif mode == "video":
+        import io
+        from PIL import Image
+        for j in jobs:  # embed each input picture (as a small JPEG) in the job itself
+            buf = io.BytesIO()
+            Image.open(j["image"]).convert("RGB").resize((j["w"], j["h"])).save(buf, "JPEG", quality=92)
+            j["image"] = base64.b64encode(buf.getvalue()).decode()
+        run(os.path.join(HERE, "kaggle_gen", "video.py"), jobs, out_dir, slug="video-generator", poll=60)
+    else:
+        sys.exit("mode must be images or video")

@@ -1,0 +1,6 @@
+[
+ {"name": "owl-clip", "image": "ai/characters/owl.png", "w": 640, "h": 640, "frames": 97, "steps": 40, "seed": 1,
+  "prompt": "A wise old cartoon owl with round glasses and a knitted scarf sits on a mossy branch in a sunlit forest. He blinks slowly, tilts his head to the side and gently ruffles his feathers, then smiles warmly. Soft golden light, floating dust in the air, the camera slowly pushes in. 3D animated movie style."},
+ {"name": "lamb-clip", "image": "ai/characters/mila-3d.png", "w": 640, "h": 640, "frames": 97, "steps": 40, "seed": 2,
+  "prompt": "A cute fluffy white cartoon lamb stands in a meadow of pink flowers at sunset. She looks around happily, her ears flop, and she takes a few small steps forward as a gentle breeze moves the flowers. Warm sunset light, the camera slowly follows her. 3D animated movie style."}
+]
